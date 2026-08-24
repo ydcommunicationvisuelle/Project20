@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos missions — Pahid Monde</title>
+<meta name="description" content="Développement économique, développement social, formation et renforcement des capacités, mise en œuvre de projets, protection de l'environnement : découvrez les 5 missions de PAHID MONDE.">
+<link rel="icon" href="media/FAVicon.png">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+  /* =========================================================
+     ESTILOS CUSTOMIZADOS PARA A PÁGINA MISSIONS
+     ========================================================= */
+
+  /* Hero com Vídeo Background Centralizado */
+  .page-hero--missions-video {
+    position: relative;
+    width: 100%;
+    min-height: 820px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 120px 20px 80px;
+    background: #0B132A;
+    text-align: center;
+  }
+
+  .page-hero__video-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 1;
+  }
+
+  .page-hero__video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg, 
+      rgba(11, 19, 42, 0.55) 0%, 
+      rgba(11, 19, 42, 0.88) 100%
+    );
+    z-index: 2;
+  }
+
+  .page-hero__video-content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #FFFFFF;
+  }
+
+  .page-hero__eyebrow {
+    color: #E3A438;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+    display: block;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .page-hero__video-content h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.15;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .page-hero__video-content p {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: #F1F5F9;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 800px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Indicador de Rolagem (Seta Animada) */
+  .hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, color 0.3s ease;
+  }
+
+  .hero-scroll:hover {
+    opacity: 1;
+    color: #E3A438;
+  }
+
+  .hero-scroll__arrow {
+    width: 38px;
+    height: 38px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-8px);
+    }
+    60% {
+      transform: translateY(-4px);
+    }
+  }
+
+  /* Seção de Missões - Layout em Grid de 2 Colunas */
+  .section--missions-list {
+    background-color: #F8FAFC;
+    padding: 100px 0;
+  }
+
+  .missions-grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+  }
+
+  /* Card da Missão */
+  .mission-card-full {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-top: 4px solid #E3A438;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(11, 19, 42, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mission-card-full:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 38px rgba(11, 19, 42, 0.08);
+  }
+
+  .mission-card-full--span-2 {
+    grid-column: span 2;
+  }
+
+  .mission-card-full__header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #F1F5F9;
+  }
+
+  .mission-card-full__icon {
+    width: 62px;
+    height: 62px;
+    min-width: 62px;
+    border-radius: 14px;
+    background: rgba(227, 164, 56, 0.12);
+    color: #E3A438;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mission-card-full__icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .mission-card-full__title {
+    color: #000000 !important; /* Preto puro */
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .mission-card-full__body {
+    color: #334155 !important; /* Cor de texto bem escura para máxima leitura */
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  /* Subtítulos dentro dos cards */
+  .mission-subgroup {
+    margin-bottom: 20px;
+  }
+
+  .mission-subgroup:last-child {
+    margin-bottom: 0;
+  }
+
+  .mission-subgroup__title {
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: #0B132A;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mission-subgroup__title::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #E3A438;
+    border-radius: 50%;
+  }
+
+  /* Listas estilizadas */
+  .mission-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+  }
+
+  .mission-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 6px;
+    color: #334155;
+  }
+
+  .mission-list li::before {
+    content: "•";
+    color: #E3A438;
+    font-weight: bold;
+    position: absolute;
+    left: 4px;
+    top: 0;
+  }
+
+  /* Responsividade */
+  @media (max-width: 992px) {
+    .missions-grid-2col {
+      grid-template-columns: 1fr;
+    }
+    .mission-card-full--span-2 {
+      grid-column: span 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero--missions-video {
+      min-height: 600px;
+      padding: 100px 16px 80px;
+    }
+    .mission-card-full {
+      padding: 28px 20px;
+    }
+    .mission-card-full__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="nav__logo">
+      <img src="media/FAVicon.png" alt="Logo Pahid Monde" class="nav__logo-img">
+      <span>PAHID MONDE</span>
+    </a>
+    <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">Qui sommes-nous</a></li>
+      <li><a href="valeurs.html">Valeurs</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="index.html#activites">Nos activités</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav__cta">
+      <a href="contact.html" class="btn btn--gold">
+        Nous contacter
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </nav>
+</header>
+
+
+<!-- ============ PAGE HERO AVEC VIDÉO CENTRALISÉE (MIN-HEIGHT 820PX) ============ -->
+<section class="page-hero--missions-video">
+  <video autoplay loop muted playsinline class="page-hero__video-media">
+    <source src="media/handshake1_296455756.mov" type="video/mp4">
+  </video>
+  <div class="page-hero__video-overlay"></div>
+  <div class="page-hero__video-content">
+    <span class="page-hero__eyebrow">Nos missions</span>
+    <h1>Cinq missions au service d'un développement durable et partagé</h1>
+    <p>De l'économie locale à la protection de l'environnement, chaque mission de PAHID MONDE contribue à bâtir un pont solide entre les territoires du Nord et du Sud.</p>
+  </div>
+
+  <!-- SETA DE ROLAGEM -->
+  <a href="#missions-liste" class="hero-scroll" aria-label="Découvrir nos missions">
+    <div class="hero-scroll__arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+        <path d="M12 5v14M19 12l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </a>
+</section>
+
+<!-- ============ MISSIONS (GRID DE 2 COLUNAS DE DETALHADA) ============ -->
+<section class="section section--missions-list" id="missions-liste">
+  <div class="container">
+    <div class="missions-grid-2col reveal-group">
+
+      <!-- 1. DÉVELOPPEMENT ÉCONOMIQUE (ÍCONE DE GRÁFICO EN CRESCIMENTO) -->
+      <article class="mission-card-full reveal">
+        <div class="mission-card-full__header">
+          <div class="mission-card-full__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18"/>
+              <path d="M18.5 7.5L13.5 12.5L10 9L4.5 14.5"/>
+              <path d="M14 7h4.5v4.5"/>
+            </svg>
+          </div>
+          <h2 class="mission-card-full__title">Développement économique</h2>
+        </div>
+        <div class="mission-card-full__body">
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Soutenir la création et la croissance des entreprises</h3>
+            <ul class="mission-list">
+              <li>Aider à la création d’entreprises (financement, accompagnement)</li>
+              <li>Favoriser l’innovation et la compétitivité</li>
+              <li>Soutenir les PME et les startups</li>
+            </ul>
+          </div>
+
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Attirer des investissements</h3>
+            <ul class="mission-list">
+              <li>Attirer des entreprises nationales et internationales</li>
+              <li>Promouvoir le territoire (infrastructures, fiscalité, qualité de vie)</li>
+            </ul>
+          </div>
+
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Développer l’emploi</h3>
+            <ul class="mission-list">
+              <li>Encourager la création d’emplois</li>
+              <li>Adapter les compétences (formation professionnelle)</li>
+              <li>Lutter contre le chômage</li>
+            </ul>
+          </div>
+
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Aménager le territoire</h3>
+            <ul class="mission-list">
+              <li>Développer les infrastructures (transports, zones industrielles)</li>
+              <li>Réduire les inégalités entre territoires</li>
+              <li>Soutenir les zones rurales ou en difficulté</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. DÉVELOPPEMENT SOCIAL -->
+      <article class="mission-card-full reveal">
+        <div class="mission-card-full__header">
+          <div class="mission-card-full__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.7-10-9.3C.4 8.1 2.2 4.5 5.7 4c2-.3 3.8.6 4.9 2.1M12 21s7.5-4.7 10-9.3c1.6-3.6-.2-7.2-3.7-7.7-2-.3-3.8.6-4.9 2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h2 class="mission-card-full__title">Développement social</h2>
+        </div>
+        <div class="mission-card-full__body">
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Actions concrètes</h3>
+            <ul class="mission-list">
+              <li>Mise en place d’ateliers d’insertion professionnelle</li>
+              <li>Accompagnement des familles en difficulté</li>
+              <li>Création de centres sociaux ou d’espaces de rencontre</li>
+              <li>Aide à l’accès aux soins ou au logement</li>
+              <li>Projets éducatifs pour les jeunes</li>
+            </ul>
+          </div>
+
+          <div class="mission-subgroup" style="margin-top: 24px;">
+            <h3 class="mission-subgroup__title">Acteurs impliqués</h3>
+            <ul class="mission-list">
+              <li>Les collectivités locales (mairies, départements)</li>
+              <li>Les associations</li>
+              <li>Les travailleurs sociaux</li>
+              <li>Les organisations publiques et privées</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. FORMATION ET RENFORCEMENT DES CAPACITÉS -->
+      <article class="mission-card-full reveal">
+        <div class="mission-card-full__header">
+          <div class="mission-card-full__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8.5 12 4l10 4.5-10 4.5-10-4.5Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h2 class="mission-card-full__title">Formation et renforcement des capacités</h2>
+        </div>
+        <div class="mission-card-full__body">
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Objectif principal</h3>
+            <p style="margin-bottom: 12px;">Permettre aux bénéficiaires de devenir plus autonomes, performants et durables dans leurs activités.</p>
+          </div>
+
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Concrètement, cela inclut :</h3>
+            <ul class="mission-list">
+              <li>Formations (techniques, managériales, administratives)</li>
+              <li>Coaching / accompagnement personnalisé</li>
+              <li>Mise en place d’outils et de procédures</li>
+              <li>Renforcement des structures organisationnelles</li>
+              <li>Transfert de compétences et de savoir-faire</li>
+            </ul>
+          </div>
+
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Domaines d’application</h3>
+            <ul class="mission-list">
+              <li>Développement international (ONG, projets financés par des bailleurs)</li>
+              <li>Administrations publiques</li>
+              <li>Entreprises (transformation interne, montée en compétences)</li>
+              <li>Secteur éducatif ou associatif</li>
+            </ul>
+          </div>
+
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Exemples simples</h3>
+            <ul class="mission-list">
+              <li>Former des agents locaux à la gestion de projet</li>
+              <li>Améliorer la gestion financière</li>
+              <li>Structurer l’organisation interne</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. MISE EN ŒUVRE DE PROJETS DE DÉVELOPPEMENT -->
+      <article class="mission-card-full reveal">
+        <div class="mission-card-full__header">
+          <div class="mission-card-full__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+          </div>
+          <h2 class="mission-card-full__title">Mise en œuvre de projets de développement</h2>
+        </div>
+        <div class="mission-card-full__body">
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">1. Planification détaillée</h3>
+            <ul class="mission-list">
+              <li>Définir les objectifs spécifiques</li>
+              <li>Identifier les activités à réaliser</li>
+              <li>Établir un calendrier (planning)</li>
+              <li>Prévoir le budget</li>
+            </ul>
+          </div>
+
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">2. Mobilisation des ressources</h3>
+            <ul class="mission-list">
+              <li>Ressources humaines (équipes, partenaires)</li>
+              <li>Ressources financières (financements, subventions)</li>
+              <li>Moyens matériels et techniques</li>
+            </ul>
+          </div>
+
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">3. Exécution des activités</h3>
+            <ul class="mission-list">
+              <li>Lancer les actions prévues</li>
+              <li>Coordonner les acteurs impliqués</li>
+              <li>Assurer la communication entre les parties prenantes</li>
+            </ul>
+          </div>
+
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">4. Suivi et contrôle</h3>
+            <ul class="mission-list">
+              <li>Vérifier l’avancement du projet</li>
+              <li>Comparer résultats / objectifs</li>
+              <li>Identifier les problèmes et ajuster</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. PROTECTION DE L'ENVIRONNEMENT (ÍCONE DE FOLHA) -->
+      <article class="mission-card-full mission-card-full--span-2 reveal">
+        <div class="mission-card-full__header">
+          <div class="mission-card-full__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.4 19 2c1 2 2 4.1 2 9a9 9 0 0 1-10 9Z"/>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+            </svg>
+          </div>
+          <h2 class="mission-card-full__title">Protection de l’environnement</h2>
+        </div>
+        <div class="mission-card-full__body" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Actions concrètes</h3>
+            <ul class="mission-list">
+              <li>Reboisement et protection des forêts</li>
+              <li>Nettoyage des océans et des rivières</li>
+              <li>Sensibilisation du public (éducation environnementale)</li>
+              <li>Promotion des énergies renouvelables</li>
+              <li>Réduction des déchets et recyclage</li>
+            </ul>
+          </div>
+
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Acteurs impliqués</h3>
+            <ul class="mission-list">
+              <li>Les gouvernements (politiques écologiques)</li>
+              <li>Les ONG comme Greenpeace</li>
+              <li>Les entreprises (responsabilité sociétale)</li>
+              <li>Les citoyens (gestes quotidiens)</li>
+            </ul>
+          </div>
+
+          <div class="mission-subgroup">
+            <h3 class="mission-subgroup__title">Exemples de missions</h3>
+            <ul class="mission-list">
+              <li>Protéger une forêt menacée</li>
+              <li>Sauvegarder une espèce en danger</li>
+              <li>Réduire la pollution dans une ville</li>
+            </ul>
+          </div>
+
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER DE CORRENTE / PONTE -->
+<div class="bridge-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 64" preserveAspectRatio="none"><path d="M0,64 C420,0 1020,0 1440,64 L1440,64 L0,64 Z" style="fill: #0B132A"/></svg>
+</div>
+
+<!-- ============ CTA ============ -->
+<section class="section section--ink section--tight" style="background-color: #0B132A; padding: 80px 0;">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <div>
+        <h2>Un projet à faire naître dans l'une de ces missions ?</h2>
+        <p>Notre équipe vous accompagne de la conception à la mise en œuvre, sur le terrain comme à distance.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="contact.html" class="btn btn--gold">Nous contacter</a>
+        <a href="a-propos.html" class="btn btn--outline">Qui sommes-nous ?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="media/Horizon-LOGO-PAHID-MONDE copie.png" alt="Logo Pahid Monde">
+        <p>PAHID MONDE favorise une cohésion sociale entre les nations du nord et celles du sud pour tendre vers un monde plus équilibré.</p>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@PahidMonde" aria-label="YouTube" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/youtube-aWufNVX.png" alt=""></a>
+          <a href="https://www.facebook.com/people/Pahid-Monde-Developpement/61584869464890/" aria-label="Facebook" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/facebook-qauTx-6.png" alt=""></a>
+          <a href="https://www.linkedin.com/company/pahid-monde-d%C3%A9veloppement/" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/linkedin-lTQRe2D.png" alt=""></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li><a href="valeurs.html">Valeurs</a></li>
+          <li><a href="missions.html">Missions</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>18 Bis Avenue Lalande<br>77500 Chelles</li>
+          <li><a href="mailto:contact@pahidmonde.org">contact@pahidmonde.org</a></li>
+          <li><a href="tel:+33987552939">Fixe : +33 9 87 55 29 39</a></li>
+          <li><a href="tel:+33767975886">Mobile : +33 7 67 97 58 86</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 — Pahid Monde. Tous droits réservés.</p>
+      <button type="button" data-open-rgpd>Politique de confidentialité (RGPD)</button>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay">
+  <div class="modal">
+    <h3>Politique de confidentialité</h3>
+    <p>Nous nous engageons à respecter la vie privée des utilisateurs et à traiter leurs données personnelles conformément à la réglementation en vigueur, notamment le Règlement Général sur la Protection des Données (RGPD).</p>
+    <button type="button" class="btn btn--outline-dark" data-close-rgpd>Fermer</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+
+
+<div class="modal-overlay">
+  <div class="modal">
+    <h3>Politique de confidentialité</h3>
+    <p>Nous nous engagions à respecter la vie privée des utilisateurs et à traiter leurs données personnelles conformément à la réglementation en vigueur, notamment le Règlement Général sur la Protection des Données (RGPD).</p>
+    <button type="button" class="btn btn--outline-dark" data-close-rgpd>Fermer</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
