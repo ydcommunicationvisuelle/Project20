@@ -1148,7 +1148,7 @@ button{ font-family: inherit; cursor: pointer; }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
-  margin-top: 2.5rem;
+  margin-top: 2.3rem;
 }
 
 .gallery-item {
