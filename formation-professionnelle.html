@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formation professionnelle & Événements — PAHID MONDE</title>
+  <link rel="stylesheet" href="css/style.css"> <!-- Seu CSS global se houver -->
+  <style>
+    /* ---------- RESET & BASICS ---------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      color: #2b2d42;
+      background-color: #f8f9fa;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- HERO SECTION WITH VIDEO ---------- */
+    .hero {
+      position: relative;
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      overflow: hidden;
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    .hero__video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(13, 27, 42, 0.65) 0%, rgba(13, 27, 42, 0.85) 100%);
+      z-index: 2;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero__subtitle {
+      display: inline-block;
+      color: #d4af37;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .hero__title {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero__description {
+      font-size: 1.2rem;
+      color: #e2e8f0;
+      max-width: 750px;
+      margin: 0 auto 2rem auto;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ---------- SECTIONS & CARDS ---------- */
+    .section {
+      padding: 5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .service-card__icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(212, 175, 55, 0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d4af37;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card__title {
+      font-size: 1.4rem;
+      color: #0d1b2a;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .service-card__intro {
+      color: #64748b;
+      font-size: 0.98rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .service-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      color: #4a5568;
+      font-size: 0.98rem;
+    }
+
+    .service-list svg {
+      flex-shrink: 0;
+      color: #d4af37;
+      margin-top: 3px;
+    }
+
+    /* ---------- NOTRE APPROCHE ---------- */
+    .approach-section {
+      background: linear-gradient(135deg, #0d1b2a 0%, #1b2a4a 100%);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 4rem 3rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(13, 27, 42, 0.2);
+    }
+
+    .approach-content {
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .approach-title {
+      font-size: 2.2rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .approach-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: #d4af37;
+      margin: 0.75rem auto 0 auto;
+      border-radius: 2px;
+    }
+
+    .approach-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .approach-text:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---------- RESPONSIVE MOBILE ---------- */
+    @media (max-width: 860px) {
+      .hero {
+        min-height: 60vh;
+        padding: 3rem 1rem;
+      }
+
+      .hero__title {
+        font-size: 2.1rem;
+      }
+
+      .hero__description {
+        font-size: 1rem;
+      }
+
+      .section {
+        padding: 3rem 1rem;
+      }
+
+      .service-card {
+        padding: 1.75rem;
+      }
+
+      .approach-section {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .approach-title {
+        font-size: 1.75rem;
+      }
+
+      .approach-text {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">
+        <img src="media/FAVicon.png" alt="Logo Pahid Monde" class="nav__logo-img">
+        <span>PAHID MONDE</span>
+      </a>
+
+      <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="nav__overlay"></div>
+
+      <div class="nav__menu">
+        <ul class="nav__links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li><a href="valeurs.html">Valeurs</a></li>
+          <li><a href="missions.html">Missions</a></li>
+          <li><a href="index.html#activites">Nos activités</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav__cta">
+          <a href="contact.html" class="btn btn--gold">
+            Nous contacter
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION CON VIDEO -->
+  <section class="hero">
+    <video class="hero__video" autoplay loop muted playsinline preload="metadata">
+      <source src="media/formation_247667159.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la lecture de vidéos.
+    </video>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <span class="hero__subtitle">Développement des compétences</span>
+      <h1 class="hero__title">Formation professionnelle</h1>
+      <p class="hero__description">
+        Des formations conçues pour développer les compétences, renforcer l’efficacité professionnelle et accompagner les évolutions des métiers.
+      </p>
+      <a href="contact.html" class="btn btn--gold">
+        Nous contacter
+      </a>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="section">
+    <div class="container">
+      
+      <div class="services-grid">
+        
+        <!-- CARD 1: FORMATIONS SUR MESURE -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
+              <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+              <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+            </svg>
+          </div>
+          <h2 class="service-card__title">Formations sur mesure adaptées aux besoins des entreprises et des équipes</h2>
+          <ul class="service-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Parcours individuels ou collectifs</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Formations en présentiel, à distance ou en format hybride</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Ateliers pratiques et mises en situation</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Accompagnement avant, pendant et après la formation</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Évaluation des acquis et mesure de la progression</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CARD 2: CONFERENCES ET EVENEMENTS -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h2 class="service-card__title">Conférences & évènements professionnels</h2>
+          <p class="service-card__intro">
+            Des conférences dynamiques et accessibles pour sensibiliser, inspirer et faire émerger de nouvelles perspectives.
+          </p>
+          <ul class="service-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Conférences thématiques adaptées au public et au contexte</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Interventions lors de séminaires, conventions et événements professionnels</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Conférences inspirantes et participatives</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Témoignages, retours d’expérience et partage de bonnes pratiques</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Formats courts ou approfondis selon vos objectifs</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Possibilité d’échanges et de questions-réponses avec les participants</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- NOTRE APPROCHE -->
+      <section class="approach-section reveal">
+        <div class="approach-content">
+          <h2 class="approach-title">Notre approche</h2>
+          <p class="approach-text">
+            Chaque intervention est pensée pour être concrète, interactive et directement applicable. L’objectif est de transmettre des connaissances, mais surtout de permettre aux participants de repartir avec des outils, des méthodes et des pistes d’action immédiatement mobilisables.
+          </p>
+          <p class="approach-text">
+            De la montée en compétences à l’inspiration, nous vous accompagnons pour transformer les enjeux professionnels en leviers de développement et de performance.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-text">PAHID MONDE</span>
+        <p>Accompagnement, développement des compétences et transformation professionnelle.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li><a href="valeurs.html">Valeurs</a></li>
+          <li><a href="missions.html">Missions</a></li>
+          <li><a href="index.html#activites">Nos activités</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: contact@pahidmonde.org</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 PAHID MONDE. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
