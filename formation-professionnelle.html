@@ -1,445 +1,744 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formation professionnelle & Événements — PAHID MONDE</title>
-  <link rel="stylesheet" href="css/style.css"> <!-- Seu CSS global se houver -->
-  <style>
-    /* ---------- RESET & BASICS ---------- */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation professionnelle — Pahid Monde</title>
+<meta name="description" content="Formations conçues pour développer les compétences, renforcer l'efficacité professionnelle et accompagner les évolutions des métiers.">
+<link rel="icon" href="media/FAVicon.png">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+  /* =========================================================
+     ESTILOS CUSTOMIZADOS PARA A PÁGINA FORMATION PROFESSIONNELLE
+     ========================================================= */
+
+  /* Hero Section */
+  .page-hero--about-video {
+    position: relative;
+    width: 100%;
+    min-height: 820px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 120px 20px 80px;
+    background: #0B132A;
+    text-align: center;
+  }
+
+  .page-hero__video-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 1;
+  }
+
+  .page-hero__video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg, 
+      rgba(11, 19, 42, 0.4) 0%, 
+      rgba(11, 19, 42, 0.8) 100%
+    );
+    z-index: 2;
+  }
+
+  .page-hero__video-content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .page-hero__eyebrow {
+    color: #E3A438;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    display: block;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .page-hero__video-content h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.15;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .page-hero__video-content p {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: #F1F5F9;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 800px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  .hero-scroll:hover {
+    opacity: 1;
+    color: #E3A438;
+  }
+
+  .hero-scroll__arrow {
+    width: 38px;
+    height: 38px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-8px); }
+    60% { transform: translateY(-4px); }
+  }
+
+  /* Structural Content Grid & Layout */
+  .section--formation {
+    padding: 90px 0;
+    background-color: #F8FAFC;
+  }
+
+  .offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .offer-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 35px 30px;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 20px rgba(11, 19, 42, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(11, 19, 42, 0.08);
+  }
+
+  .offer-card__tag {
+    display: inline-block;
+    background-color: rgba(227, 164, 56, 0.15);
+    color: #B87A14;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+  }
+
+  .offer-card h3 {
+    font-size: 1.5rem;
+    color: #0B132A;
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+
+  .offer-card p {
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .offer-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .offer-card__list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 10px;
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .offer-card__list li::before {
+    content: "•";
+    color: #E3A438;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 4px;
+    top: -4px;
+  }
+
+  /* Bloco Notre Approche */
+  .approach-box {
+    background: #0B132A;
+    color: #FFFFFF;
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 80px;
+    box-shadow: 0 10px 30px rgba(11, 19, 42, 0.15);
+  }
+
+  .approach-box h3 {
+    color: #E3A438;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .approach-box p {
+    color: #E2E8F0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .approach-box p + p {
+    margin-top: 12px;
+  }
+
+    /* Estilos do Accordion Interativo */
+  .accordion-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .accordion-item {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(11, 19, 42, 0.03);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .accordion-item:hover {
+    border-color: #CBD5E1;
+  }
+
+  .accordion-item.active {
+    border-color: #E3A438;
+    box-shadow: 0 4px 15px rgba(227, 164, 56, 0.12);
+  }
+
+  .accordion-header {
+    width: 100%;
+    padding: 20px 24px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    text-align: left;
+    gap: 15px;
+  }
+
+  .category-badge {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0B132A;
+  }
+
+  .accordion-count {
+    font-size: 0.85rem;
+    color: #64748B;
+    background: #F1F5F9;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .accordion-icon {
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid #0B132A;
+    border-bottom: 2px solid #0B132A;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .accordion-item.active .accordion-icon {
+    transform: rotate(-135deg);
+    border-color: #E3A438;
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+    background-color: #F8FAFC;
+  }
+
+  .course-list {
+    list-style: none;
+    padding: 10px 24px 20px;
+    margin: 0;
+    border-top: 1px solid #F1F5F9;
+  }
+
+  .course-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #E2E8F0;
+    color: #334155;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .course-list li:last-child {
+    border-bottom: none;
+  }
+
+  .course-list li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #E3A438;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Ajustes Mobile */
+  @media (max-width: 600px) {
+    .accordion-header {
+      padding: 16px;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-      color: #2b2d42;
-      background-color: #f8f9fa;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+    .accordion-count {
+      order: 3;
+      margin-left: 0;
     }
-
-    /* ---------- HERO SECTION WITH VIDEO ---------- */
-    .hero {
-      position: relative;
-      min-height: 75vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      overflow: hidden;
-      padding: 4rem 1.5rem;
-      text-align: center;
+    .accordion-icon {
+      order: 2;
     }
-
-    .hero__video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-      z-index: 1;
+    .category-badge {
+      order: 1;
+      font-size: 0.95rem;
+      flex: 1;
     }
-
-    .hero__overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, rgba(13, 27, 42, 0.65) 0%, rgba(13, 27, 42, 0.85) 100%);
-      z-index: 2;
+    .course-list {
+      padding: 10px 16px 16px;
     }
-
-    .hero__content {
-      position: relative;
-      z-index: 3;
-      max-width: 900px;
-      margin: 0 auto;
+    .course-list li {
+      font-size: 0.88rem;
     }
+  }
 
-    .hero__subtitle {
-      display: inline-block;
-      color: #d4af37;
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-    }
-
-    .hero__title {
-      font-size: 3rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero__description {
-      font-size: 1.2rem;
-      color: #e2e8f0;
-      max-width: 750px;
-      margin: 0 auto 2rem auto;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    /* ---------- SECTIONS & CARDS ---------- */
-    .section {
-      padding: 5rem 1.5rem;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-      margin-bottom: 4rem;
-    }
-
-    .service-card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 2.5rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      border: 1px solid rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    }
-
-    .service-card__icon {
-      width: 56px;
-      height: 56px;
-      background: rgba(212, 175, 55, 0.12);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #d4af37;
-      margin-bottom: 1.5rem;
-    }
-
-    .service-card__title {
-      font-size: 1.4rem;
-      color: #0d1b2a;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .service-card__intro {
-      color: #64748b;
-      font-size: 0.98rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-
-    .service-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .service-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.85rem;
-      color: #4a5568;
-      font-size: 0.98rem;
-    }
-
-    .service-list svg {
-      flex-shrink: 0;
-      color: #d4af37;
-      margin-top: 3px;
-    }
-
-    /* ---------- NOTRE APPROCHE ---------- */
-    .approach-section {
-      background: linear-gradient(135deg, #0d1b2a 0%, #1b2a4a 100%);
-      color: #ffffff;
-      border-radius: 20px;
-      padding: 4rem 3rem;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(13, 27, 42, 0.2);
-    }
-
-    .approach-content {
-      max-width: 850px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .approach-title {
-      font-size: 2.2rem;
-      color: #ffffff;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-    }
-
-    .approach-title::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 3px;
-      background: #d4af37;
-      margin: 0.75rem auto 0 auto;
-      border-radius: 2px;
-    }
-
-    .approach-text {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #e2e8f0;
-      margin-bottom: 1.5rem;
-      font-weight: 300;
-    }
-
-    .approach-text:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ---------- RESPONSIVE MOBILE ---------- */
-    @media (max-width: 860px) {
-      .hero {
-        min-height: 60vh;
-        padding: 3rem 1rem;
-      }
-
-      .hero__title {
-        font-size: 2.1rem;
-      }
-
-      .hero__description {
-        font-size: 1rem;
-      }
-
-      .section {
-        padding: 3rem 1rem;
-      }
-
-      .service-card {
-        padding: 1.75rem;
-      }
-
-      .approach-section {
-        padding: 2.5rem 1.5rem;
-      }
-
-      .approach-title {
-        font-size: 1.75rem;
-      }
-
-      .approach-text {
-        font-size: 1rem;
-      }
-    }
-  </style>
+</style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <nav class="nav container">
-      <a href="index.html" class="nav__logo">
-        <img src="media/FAVicon.png" alt="Logo Pahid Monde" class="nav__logo-img">
-        <span>PAHID MONDE</span>
-      </a>
-
-      <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22">
-          <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/>
-        </svg>
-      </button>
-
-      <div class="nav__overlay"></div>
-
-      <div class="nav__menu">
-        <ul class="nav__links">
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="a-propos.html">Qui sommes-nous</a></li>
-          <li><a href="valeurs.html">Valeurs</a></li>
-          <li><a href="missions.html">Missions</a></li>
-          <li><a href="index.html#activites">Nos activités</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-
-        <div class="nav__cta">
-          <a href="contact.html" class="btn btn--gold">
-            Nous contacter
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-              <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- HERO SECTION CON VIDEO -->
-  <section class="hero">
-    <video class="hero__video" autoplay loop muted playsinline preload="metadata">
-      <source src="media/formation_247667159.mp4" type="video/mp4">
-      Votre navigateur ne supporte pas la lecture de vidéos.
-    </video>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <span class="hero__subtitle">Développement des compétences</span>
-      <h1 class="hero__title">Formation professionnelle</h1>
-      <p class="hero__description">
-        Des formations conçues pour développer les compétences, renforcer l’efficacité professionnelle et accompagner les évolutions des métiers.
-      </p>
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="nav__logo">
+      <img src="media/FAVicon.png" alt="Logo Pahid Monde" class="nav__logo-img">
+      <span>PAHID MONDE</span>
+    </a>
+    <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">Qui sommes-nous</a></li>
+      <li><a href="valeurs.html">Valeurs</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="index.html#activites">Nos activités</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav__cta">
       <a href="contact.html" class="btn btn--gold">
         Nous contacter
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
-  </section>
+  </nav>
+</header>
 
-  <!-- MAIN CONTENT -->
-  <main class="section">
-    <div class="container">
+<!-- ============ PAGE HERO AVEC VIDÉO CENTRALISÉE ============ -->
+<section class="page-hero--about-video">
+  <video autoplay loop muted playsinline preload="metadata" class="page-hero__video-media">
+    <source src="media/formation_247667159.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la lecture de vidéos.
+  </video>
+  <div class="page-hero__video-overlay"></div>
+  
+  <div class="page-hero__video-content">
+    <span class="page-hero__eyebrow">Développement des compétences</span>
+    <h1>Formation professionnelle</h1>
+    <p>Des formations conçues pour développer les compétences, renforcer l’efficacité professionnelle et accompagner les évolutions des métiers.</p>
+  </div>
+
+  <a href="#formation-details" class="hero-scroll" aria-label="Découvrir la suite">
+    <div class="hero-scroll__arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+        <path d="M12 5v14M19 12l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </a>
+</section>
+
+<!-- ============ CONTEÚDO PRINCIPAL (EXCLUSIVAMENTE TEXTO & TABELA) ============ -->
+<section class="section section--formation" id="formation-details">
+  <div class="container">
+
+    <!-- OFERTAS EM CARDS -->
+    <div class="offers-grid reveal-group">
       
-      <div class="services-grid">
-        
-        <!-- CARD 1: FORMATIONS SUR MESURE -->
-        <div class="service-card reveal">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
-              <path d="M12 14l9-5-9-5-9 5 9 5z"/>
-              <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-            </svg>
-          </div>
-          <h2 class="service-card__title">Formations sur mesure adaptées aux besoins des entreprises et des équipes</h2>
-          <ul class="service-list">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Parcours individuels ou collectifs</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Formations en présentiel, à distance ou en format hybride</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Ateliers pratiques et mises en situation</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Accompagnement avant, pendant et après la formation</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Évaluation des acquis et mesure de la progression</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- CARD 2: CONFERENCES ET EVENEMENTS -->
-        <div class="service-card reveal">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-          </div>
-          <h2 class="service-card__title">Conférences & évènements professionnels</h2>
-          <p class="service-card__intro">
-            Des conférences dynamiques et accessibles pour sensibiliser, inspirer et faire émerger de nouvelles perspectives.
-          </p>
-          <ul class="service-list">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Conférences thématiques adaptées au public et au contexte</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Interventions lors de séminaires, conventions et événements professionnels</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Conférences inspirantes et participatives</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Témoignages, retours d’expérience et partage de bonnes pratiques</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Formats courts ou approfondis selon vos objectifs</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Possibilité d’échanges et de questions-réponses avec les participants</span>
-            </li>
-          </ul>
-        </div>
-
+      <div class="offer-card reveal">
+        <span class="offer-card__tag">Sur mesure</span>
+        <h3>Formations adaptées aux besoins des entreprises</h3>
+        <p>Des programmes personnalisés ajustés aux exigences de vos équipes et de votre organisation.</p>
+        <ul class="offer-card__list">
+          <li>Parcours individuels ou collectifs</li>
+          <li>Formations en présentiel, à distance ou en format hybride</li>
+          <li>Ateliers pratiques et mises en situation</li>
+          <li>Accompagnement avant, pendant et après la formation</li>
+          <li>Évaluation des acquis et mesure de la progression</li>
+        </ul>
       </div>
 
-      <!-- NOTRE APPROCHE -->
-      <section class="approach-section reveal">
-        <div class="approach-content">
-          <h2 class="approach-title">Notre approche</h2>
-          <p class="approach-text">
-            Chaque intervention est pensée pour être concrète, interactive et directement applicable. L’objectif est de transmettre des connaissances, mais surtout de permettre aux participants de repartir avec des outils, des méthodes et des pistes d’action immédiatement mobilisables.
-          </p>
-          <p class="approach-text">
-            De la montée en compétences à l’inspiration, nous vous accompagnons pour transformer les enjeux professionnels en leviers de développement et de performance.
-          </p>
-        </div>
-      </section>
+      <div class="offer-card reveal">
+        <span class="offer-card__tag">Événements</span>
+        <h3>Conférences & événements professionnels</h3>
+        <p>Des interventions dynamiques et accessibles pour sensibiliser, inspirer et faire émerger de nouvelles perspectives.</p>
+        <ul class="offer-card__list">
+          <li>Conférences thématiques adaptées au public et au contexte</li>
+          <li>Interventions lors de séminaires, conventions et événements professionnels</li>
+          <li>Conférences inspirantes et participatives</li>
+          <li>Témoignages, retours d’expérience et partage de bonnes pratiques</li>
+          <li>Formats courts ou approfondis selon vos objectifs</li>
+          <li>Possibilité d’échanges et de questions-réponses avec les participants</li>
+        </ul>
+      </div>
 
     </div>
-  </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <span class="logo-text">PAHID MONDE</span>
-        <p>Accompagnement, développement des compétences et transformation professionnelle.</p>
+    <!-- NOTRE APPROCHE -->
+    <div class="approach-box reveal">
+      <h3>Notre approche</h3>
+      <p>Chaque intervention est pensée pour être concrète, interactive et directement applicable. L’objectif est de transmettre des connaissances, mais surtout de permettre aux participants de repartir avec des outils, des méthodes et des pistes d’action immédiatement mobilisables.</p>
+      <p>De la montée en compétences à l’inspiration, nous vous accompagnons pour transformer les enjeux professionnels en leviers de développement et de performance.</p>
+    </div>
+
+ <!-- CATALOGO DE CURSOS INTERATIVO -->
+<center><div class="catalog-section">
+  <div class="catalog-title reveal">
+    <span class="eyebrow-tag" style="justify-content: center;"><span class="dot"></span> Catalogue</span>
+    <h2 class="section__title" style="margin-top: 10px;">Nos thématiques de formation</h2><br>
+  </div></center>
+
+  <div class="accordion-container reveal">
+
+    <!-- CATEGORIA 1 -->
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="category-badge">Management & Stratégie</span>
+        <span class="accordion-count">10 formations</span>
+        <span class="accordion-icon"></span>
+      </button>
+      <div class="accordion-content">
+        <ul class="course-list">
+          <li>Management et les métiers du manager</li>
+          <li>Les sources du management</li>
+          <li>Planification stratégique</li>
+          <li>Prise de décision dans une organisation</li>
+          <li>Structurer une organisation</li>
+          <li>Changement et innovation</li>
+          <li>Motivation des collaborateurs</li>
+          <li>Bases du contrôle en entreprise</li>
+          <li>Le leadership</li>
+          <li>Management des opérations</li>
+        </ul>
       </div>
-      <div class="footer-links">
-        <h4>Navigation</h4>
+    </div>
+
+    <!-- CATEGORIA 2 -->
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="category-badge">Ressources Humaines</span>
+        <span class="accordion-count">15 formations</span>
+        <span class="accordion-icon"></span>
+      </button>
+      <div class="accordion-content">
+        <ul class="course-list">
+          <li>Techniques modernes de recrutement</li>
+          <li>Marketing RH : comment concevoir une image</li>
+          <li>Gestion informatisée des RH : quels enjeux pour la DRH ?</li>
+          <li>Piloter les réformes des conditions de travail dans une organisation</li>
+          <li>Gestion opérationnelle des ressources humaines</li>
+          <li>Technique de fixation des objectifs et des动态 indicateurs de performances RH</li>
+          <li>Gestion des carrières et de mobilité interne et internationale</li>
+          <li>Gestion prévisionnelle d’emplois et des compétences</li>
+          <li>Les outils clés pour motiver son personnel</li>
+          <li>Gestion de la fonction DRH, techniques et outils</li>
+          <li>Système de pointage et gestion de la paie dans l’administration publique</li>
+          <li>Élaboration des manuels de gestion des ressources humaines</li>
+          <li>Techniques et outils de pilotage d’un service ou d’une direction des ressources humaines</li>
+          <li>Gestion du dialogue social, la gestion des conflits dans une organisation</li>
+          <li>Management de la rémunération et veille salariale</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CATEGORIA 3 -->
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="category-badge">Soft Skills & Posture</span>
+        <span class="accordion-count">3 formations</span>
+        <span class="accordion-icon"></span>
+      </button>
+      <div class="accordion-content">
+        <ul class="course-list">
+          <li>Le savoir-vivre et les relations interpersonnelles dans une organisation</li>
+          <li>Le savoir-être professionnel et son impact dans les performances des organisations</li>
+          <li>Organisation du travail, gestion du temps et efficacité personnelle</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CATEGORIA 4 -->
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="category-badge">Finance & Comptabilité</span>
+        <span class="accordion-count">9 formations</span>
+        <span class="accordion-icon"></span>
+      </button>
+      <div class="accordion-content">
+        <ul class="course-list">
+          <li>Techniques comptables approfondies et montage des états financiers</li>
+          <li>Maîtrise du processus budgétaire en entreprise : techniques, outils et démarche</li>
+          <li>Gestion de la trésorerie d’entreprise, vérification d’agios & optimisation de la relation bancaire</li>
+          <li>Méthodologie de conduite d’une mission d’audit interne : les meilleures pratiques</li>
+          <li>Gestion financière pour les comptables et cadres non comptables</li>
+          <li>Maîtriser les techniques et outils de planification financière en entreprise</li>
+          <li>Contrôle de gestion - Tableau de bord, reporting de gestion et maîtrise des coûts</li>
+          <li>Maîtriser les techniques de consolidation des comptes</li>
+          <li>Les principaux ratios financiers : calcul, analyse et interprétation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CATEGORIA 5 -->
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="category-badge">Fiscalité & Droit</span>
+        <span class="accordion-count">9 formations</span>
+        <span class="accordion-icon"></span>
+      </button>
+      <div class="accordion-content">
+        <ul class="course-list">
+          <li>Anticiper et gérer le contrôle fiscal</li>
+          <li>Optimisation fiscale des organisations</li>
+          <li>Gouvernance fiscale et rentabilité de l’entreprise : techniques, outils et cas pratiques</li>
+          <li>Maîtriser la gestion fiscale des entreprises</li>
+          <li>Mise en place d’une stratégie d’optimisation fiscale en entreprise</li>
+          <li>Audit fiscal : évaluation de la régularité et de la conformité des données fiscales</li>
+          <li>Fiscalité pour les managers non fiscalistes</li>
+          <li>Analyse et pilotage du risque juridique dans les banques</li>
+          <li>Techniques d’optimisation fiscale en banques et établissements financiers</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CATEGORIA 6 -->
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="category-badge">Gestion de Projet</span>
+        <span class="accordion-count">6 formations</span>
+        <span class="accordion-icon"></span>
+      </button>
+      <div class="accordion-content">
+        <ul class="course-list">
+          <li>Les projets : définition et enjeux pour l’entreprise</li>
+          <li>Les grands modèles d’organisation des projets</li>
+          <li>Le management des équipes projet</li>
+          <li>Les outils de pilotage des projets : gestion du temps et des coûts</li>
+          <li>L’intégration des partenaires dans le projet</li>
+          <li>Perspectives du management des projets</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CATEGORIA 7 -->
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="category-badge">Secrétariat & Assistanat</span>
+        <span class="accordion-count">9 formations</span>
+        <span class="accordion-icon"></span>
+      </button>
+      <div class="accordion-content">
+        <ul class="course-list">
+          <li>Gestion efficace du secrétariat et management de la hiérarchie</li>
+          <li>L’assistance de direction et ses contraintes face aux impératifs de résultat</li>
+          <li>Management moderne d’un secrétariat et optimisation de la fonction de secrétaire et d’assistant de direction</li>
+          <li>Maîtriser la prise de notes en réunion pour la rédaction d’un rapport</li>
+          <li>Communication et relations publiques pour l’assistant</li>
+          <li>Accompagner efficacement plusieurs managers</li>
+          <li>L’assistant de direction dans ses missions contemporaines : planification, communication et archivage</li>
+          <li>Maîtriser les règles de protocole de préséance et de savoir-vivre</li>
+          <li>Archivage : techniques et outils modernes</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CATEGORIA 8 -->
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="category-badge">Logistique & International</span>
+        <span class="accordion-count">4 formations</span>
+        <span class="accordion-icon"></span>
+      </button>
+      <div class="accordion-content">
+        <ul class="course-list">
+          <li>Maîtrise des opérations logistiques à l’international</li>
+          <li>Maîtrise des opérations douanières</li>
+          <li>Maîtrise du financement des opérations à l’international</li>
+          <li>Analyse et maîtrise des risques</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============ CTA ============ -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <div>
+        <h2>Besoin d'une formation sur-mesure ?</h2>
+        <p>Contactez nos équipes pour élaborer ensemble le programme adapté à vos besoins.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="contact.html" class="btn btn--gold">Nous contacter</a>
+        <a href="tel:+33767975886" class="btn btn--outline">+33 7 67 97 58 86</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="media/Horizon-LOGO-PAHID-MONDE copie.png" alt="Logo Pahid Monde">
+        <p>PAHID MONDE favorise une cohésion sociale entre les nations du nord et celles du sud pour tendre vers un monde plus équilibré.</p>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@PahidMonde" aria-label="YouTube" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/youtube-aWufNVX.png" alt=""></a>
+          <a href="https://www.facebook.com/people/Pahid-Monde-Developpement/61584869464890/" aria-label="Facebook" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/facebook-qauTx-6.png" alt=""></a>
+          <a href="https://www.linkedin.com/company/pahid-monde-d%C3%A9veloppement/" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/linkedin-lTQRe2D.png" alt=""></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
         <ul>
           <li><a href="index.html">Accueil</a></li>
           <li><a href="a-propos.html">Qui sommes-nous</a></li>
           <li><a href="valeurs.html">Valeurs</a></li>
           <li><a href="missions.html">Missions</a></li>
-          <li><a href="index.html#activites">Nos activités</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
-      <div class="footer-contact">
-        <h4>Contact</h4>
-        <p>Email: contact@pahidmonde.org</p>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>18 Bis Avenue Lalande<br>77500 Chelles</li>
+          <li><a href="mailto:contact@pahidmonde.org">contact@pahidmonde.org</a></li>
+          <li><a href="tel:+33987552939">Fixe : +33 9 87 55 29 39</a></li>
+          <li><a href="tel:+33767975886">Mobile : +33 7 67 97 58 86</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 PAHID MONDE. Tous droits réservés.</p>
+      <p>© 2026 — Pahid Monde. Tous droits réservés.</p>
+      <button type="button" data-open-rgpd>Politique de confidentialité (RGPD)</button>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script src="js/main.js"></script>
+<div class="modal-overlay">
+  <div class="modal">
+    <h3>Politique de confidentialité</h3>
+    <p>Nous nous engageons à respecter la vie privée des utilisateurs et à traiter leurs données personnelles conformément à la réglementation en vigueur, notamment le Règlement Général sur la Protection des Données (RGPD).</p>
+    <button type="button" class="btn btn--outline-dark" data-close-rgpd>Fermer</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
 </body>
 </html>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const currentItem = header.parentElement;
+        const content = currentItem.querySelector('.accordion-content');
+        const isActive = currentItem.classList.contains('active');
+
+        // Opcional: Fecha os outros itens para manter limpo (Accordion Único)
+        document.querySelectorAll('.accordion-item').forEach(item => {
+          item.classList.remove('active');
+          item.querySelector('.accordion-content').style.maxHeight = null;
+        });
+
+        // Toggle no item selecionado
+        if (!isActive) {
+          currentItem.classList.add('active');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    });
+  });
+</script>
+
