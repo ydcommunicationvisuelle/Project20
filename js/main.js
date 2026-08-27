@@ -91,28 +91,63 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ---------- Contact form ---------- */
-  var form = document.querySelector('.contact-form form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var nameEl = form.querySelector('#name');
-      var emailEl = form.querySelector('#email');
-      var messageEl = form.querySelector('#message');
 
-      var name = nameEl ? nameEl.value.trim() : '';
-      var email = emailEl ? emailEl.value.trim() : '';
-      var message = messageEl ? messageEl.value.trim() : '';
-      var success = document.querySelector('.form-success');
-      var subject = encodeURIComponent('Message depuis le site — ' + name);
-      var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
-      window.location.href = 'mailto:contact@pahidmonde.org?subject=' + subject + '&body=' + body;
-      if (success) {
-        success.classList.add('is-visible');
+  /* ---------- Contact Form (Web3Forms AJAX) ---------- */
+const form = document.querySelector('.contact-form form');
+if (form) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const success = document.querySelector('.form-success');
+    
+    // Feedback visual durante o envio
+    if (success) {
+      success.style.display = 'block';
+      success.style.backgroundColor = '#dbeafe';
+      success.style.color = '#1e40af';
+      success.textContent = 'Envoi en cours, veuillez patienter...';
+      success.classList.add('is-visible');
+    }
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: json
+    })
+    .then(async (response) => {
+      let resJson = await response.json();
+      if (response.status === 200) {
+        if (success) {
+          success.style.backgroundColor = '#dcfce7';
+          success.style.color = '#15803d';
+          success.textContent = 'Merci ! Votre message a été envoyé avec succès.';
+        }
         form.reset();
+      } else {
+        if (success) {
+          success.style.backgroundColor = '#fee2e2';
+          success.style.color = '#b91c1c';
+          success.textContent = resJson.message || 'Une erreur est survenue lors de l\'envoi.';
+        }
+      }
+    })
+    .catch(error => {
+      if (success) {
+        success.style.backgroundColor = '#fee2e2';
+        success.style.color = '#b91c1c';
+        success.textContent = 'Erreur de connexion. Veuillez réessayer.';
       }
     });
-  }
+  });
+}
+
 
   /* ---------- Active nav link ---------- */
   var path = window.location.pathname.split('/').pop() || 'index.html';
