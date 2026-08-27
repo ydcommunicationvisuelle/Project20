@@ -9,208 +9,276 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-  /* =========================================================
-     ESTILOS CUSTOMIZADOS PARA A PÁGINA NOTRE ÉQUIPE
-     ========================================================= */
-  .hero-team--video {
-    position: relative;
-    width: 100%;
-    min-height: 620px; /* Mesma altura generosa do código base */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding: 120px 20px 80px;
-    background: #0B132A; /* Cor de fundo de segurança */
-    text-align: center;
+/* =========================================================
+   HERO ISOLADO COM VÍDEO (SOLUÇÃO DEFINITIVA ANTI-MARGEM MOBILE)
+   ========================================================= */
+
+/* Container do Hero com Grid Infalível */
+section.hero-team-custom-section {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 620px !important;
+  height: 620px !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #0B132A !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+/* Força Vídeo, Overlay e Conteúdo a ocuparem exatamente o mesmo espaço de Grid */
+.hero-team-custom-media,
+.hero-team-custom-overlay,
+.hero-team-custom-content {
+  grid-area: 1 / 1 !important;
+}
+
+/* Mídia do Vídeo com Cobertura Total */
+.hero-team-custom-media {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  z-index: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Overlay Escuro */
+.hero-team-custom-overlay {
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    180deg, 
+    rgba(11, 19, 42, 0.45) 0%, 
+    rgba(11, 19, 42, 0.85) 100%
+  ) !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+/* Conteúdo Centralizado */
+.hero-team-custom-content {
+  position: relative !important;
+  z-index: 3 !important;
+  max-width: 900px !important;
+  width: 100% !important;
+  padding: 120px 20px 80px !important;
+  margin: 0 auto !important;
+  color: #FFFFFF !important;
+  box-sizing: border-box !important;
+}
+
+.hero-team-custom-eyebrow {
+  color: #E3A438 !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  font-size: 0.9rem !important;
+  margin-bottom: 12px !important;
+  display: block !important;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4) !important;
+}
+
+.hero-team-custom-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem) !important;
+  font-weight: 700 !important;
+  margin: 0 0 18px 0 !important;
+  line-height: 1.2 !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.hero-team-custom-desc {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem) !important;
+  color: #F1F5F9 !important;
+  line-height: 1.7 !important;
+  margin: 0 auto !important;
+  max-width: 800px !important;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Seta de Rolagem Animada */
+.hero-team-custom-scroll {
+  position: absolute !important;
+  bottom: 25px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 4 !important;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  opacity: 0.8 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.hero-team-custom-scroll:hover {
+  opacity: 1 !important;
+  color: #E3A438 !important;
+}
+
+.hero-team-custom-arrow {
+  width: 36px !important;
+  height: 36px !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  animation: heroBounce 2s infinite !important;
+}
+
+@keyframes heroBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+/* =========================================================
+   FORÇA O ZOOM DO VÍDEO NO MOBILE PARA MATAR A MARGEM
+   ========================================================= */
+@media (max-width: 768px) {
+  section.hero-team-custom-section {
+    min-height: 560px !important;
+    height: 560px !important;
   }
 
-  .hero-team__video-media {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center; /* Foco no topo superior */
-    z-index: 1;
+  .hero-team-custom-media {
+    /* O scale obriga o vídeo a extrapolar a caixa e ser cortado pelo overflow:hidden */
+    transform: scale(1.65) !important;
+    transform-origin: center center !important;
   }
 
-  .hero-team__video-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      180deg, 
-      rgba(11, 19, 42, 0.4) 0%, 
-      rgba(11, 19, 42, 0.8) 100%
-    );
-    z-index: 2;
+  .hero-team-custom-content {
+    padding: 90px 16px 60px !important;
   }
+}
 
-  .hero-team__content {
-    position: relative;
-    z-index: 3;
-    max-width: 900px;
-    margin: 0 auto;
-    color: #FFFFFF;
-  }
+/* =========================================================
+   ESTILOS DA EQUIPE
+   ========================================================= */
+.section--team-page {
+  padding: 90px 0 110px;
+  background-color: #F8FAFC;
+}
 
-  .hero-team__eyebrow {
-    color: #E3A438;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: 0.9rem;
-    margin-bottom: 12px;
-    display: block;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  }
+.team-grid-featured {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 20px;
+}
 
-  .hero-team h1 {
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
-    font-weight: 700;
-    margin-bottom: 20px;
-    line-height: 1.15;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  }
+.team-card-featured {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 35px 25px 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(11, 19, 42, 0.04);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
 
-  .hero-team p {
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    color: #F1F5F9;
-    line-height: 1.7;
-    margin: 0 auto;
-    max-width: 800px;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  }
+.team-card-featured:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(11, 19, 42, 0.1);
+  border-color: rgba(227, 164, 56, 0.4);
+}
 
-  /* Responsive Mobile */
-  @media (max-width: 768px) {
-    .hero-team--video {
-      min-height: 520px;
-      padding: 100px 16px 80px;
-    }
-  }
-/* Seção Principale da Equipe */
-  .section--team-page {
-    padding: 90px 0 110px;
-    background-color: #F8FAFC;
-  }
+.team-photo-wrapper {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg, #E3A438 0%, #F59E0B 100%);
+  box-shadow: 0 8px 20px rgba(227, 164, 56, 0.25);
+}
 
-  /* Grid Responsivo da Equipe */
+.team-photo-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #F1F5F9;
+}
+
+.team-photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  object-position: top !important;
+  filter: none !important;
+  transition: transform 0.4s ease;
+}
+
+.team-card-featured:hover .team-photo-inner img {
+  transform: scale(1.08);
+}
+
+.team-card-featured h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 8px;
+}
+
+.team-card-featured .role-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: #FEF3C7;
+  color: #92400E;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 50px;
+  letter-spacing: 0.3px;
+  margin-bottom: 14px;
+}
+
+.team-card-featured .team-bio {
+  font-size: 0.95rem;
+  color: #64748B;
+  line-height: 1.6;
+  margin-top: auto;
+}
+
+@media (max-width: 992px) {
   .team-grid-featured {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin-top: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section--team-page {
+    padding: 60px 0 80px;
   }
 
-  /* Card Individual de Membro */
-  .team-card-featured {
-    background: #FFFFFF;
-    border: 1px solid #E2E8F0;
-    border-radius: 20px;
-    padding: 35px 25px 30px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(11, 19, 42, 0.04);
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+  .team-grid-featured {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .team-card-featured:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(11, 19, 42, 0.1);
-    border-color: rgba(227, 164, 56, 0.4);
-  }
-
-  /* Moldura da Foto Colorida */
   .team-photo-wrapper {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    margin-bottom: 24px;
-    border-radius: 50%;
-    padding: 5px;
-    background: linear-gradient(135deg, #E3A438 0%, #F59E0B 100%);
-    box-shadow: 0 8px 20px rgba(227, 164, 56, 0.25);
+    width: 140px;
+    height: 140px;
   }
-
-  .team-photo-inner {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    overflow: hidden;
-    background: #F1F5F9;
-  }
-
-  .team-photo-inner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    filter: none !important; /* Emite fotos 100% coloridas */
-    transition: transform 0.4s ease;
-  }
-
-  .team-card-featured:hover .team-photo-inner img {
-    transform: scale(1.08); /* Efeito suave de zoom ao passar o mouse */
-  }
-
-  /* Informações do Membro */
-  .team-card-featured h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #0F172A;
-    margin-bottom: 8px;
-  }
-
-  .team-card-featured .role-badge {
-    display: inline-block;
-    padding: 6px 16px;
-    background-color: #FEF3C7;
-    color: #92400E;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border-radius: 50px;
-    letter-spacing: 0.3px;
-    margin-bottom: 14px;
-  }
-
-  .team-card-featured .team-bio {
-    font-size: 0.95rem;
-    color: #64748B;
-    line-height: 1.6;
-    margin-top: auto;
-  }
-
-  /* Responsividade (Tablets e Celulares) */
-  @media (max-width: 992px) {
-    .team-grid-featured {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .hero-team {
-      padding: 110px 16px 60px;
-    }
-    .section--team-page {
-      padding: 60px 0 80px;
-    }
-    .team-grid-featured {
-      grid-template-columns: 1fr; /* 1 card por linha no celular */
-      max-width: 380px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .team-photo-wrapper {
-      width: 140px;
-      height: 140px;
-    }
-  }
+}
 </style>
 </head>
 <body>
@@ -237,22 +305,21 @@
   </nav>
 </header>
 
-<!-- ============ HERO ÉQUIPE AVEC VIDÉO ============ -->
-<section class="hero-team--video">
-  <video autoplay loop muted playsinline class="hero-team__video-media">
+<!-- ============ HERO ÉQUIPE AVEC VIDÉO (CLASSES ISOLADAS) ============ -->
+<section class="hero-team-custom-section">
+  <video autoplay loop muted playsinline class="hero-team-custom-media">
     <source src="media/Equipe_376334316.webm" type="video/webm">
   </video>
-  <div class="hero-team__video-overlay"></div>
+  <div class="hero-team-custom-overlay"></div>
   
-  <div class="hero-team__content">
-    <span class="hero-team__eyebrow">Capital Humain</span>
-    <h1>Les personnes qui portent le projet</h1>
-    <p>Une équipe engagée, pluridisciplinaire et passionnée qui met ses compétences et son énergie au service de l'inclusion sociale et du développement durable.</p>
+  <div class="hero-team-custom-content">
+    <span class="hero-team-custom-eyebrow">Capital Humain</span>
+    <h1 class="hero-team-custom-title">Les personnes qui portent le projet</h1>
+    <p class="hero-team-custom-desc">Une équipe engagée, pluridisciplinaire et passionnée qui met ses compétences et son énergie au service de l'inclusion sociale et du développement durable.</p>
   </div>
 
-  <!-- SETA DE ROLAGEM ANIMADA -->
-  <a href="#equipe-liste" class="hero-scroll" aria-label="Découvrir l'équipe">
-    <div class="hero-scroll__arrow">
+  <a href="#equipe-liste" class="hero-team-custom-scroll" aria-label="Découvrir l'équipe">
+    <div class="hero-team-custom-arrow">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
         <path d="M12 5v14M19 12l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -261,7 +328,7 @@
 </section>
 
 <!-- ============ LISTE DE L'ÉQUIPE ============ -->
-<section class="section--team-page">
+<section class="section--team-page" id="equipe-liste">
   <div class="container">
     <div class="team-grid-featured reveal-group">
 
