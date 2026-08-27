@@ -174,58 +174,7 @@
     line-height: 1.6;
   }
 
-  /* Fotos da Equipe */
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-  }
-
-  .team-card {
-    background: #FFFFFF;
-    border: 1px solid #E2E8F0;
-    border-radius: 16px;
-    padding: 25px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .team-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  }
-
-  .team-photo {
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 18px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #E3A438;
-  }
-
-  .team-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-  }
-
-  @media (max-width: 768px) {
-    .page-hero--about-video {
-      min-height: 520px;
-      padding: 100px 16px 80px;
-    }
-    .about-media {
-      max-height: 400px;
-    }
-    .team-photo {
-      width: 120px;
-      height: 120px;
-    }
-  }
+  
 </style>
 </head>
 <body>
@@ -327,49 +276,193 @@
   </div>
 </section>
 
-<!-- ============ ÉQUIPE ============ -->
-<section class="section" id="equipe" style="padding: 80px 0; background-color: #FFFFFF;">
+<!-- ============ ÉQUIPE (MÓDULO ISOLADO) ============ -->
+<section class="pm-team-section" id="equipe">
+  <style>
+    /* =========================================================
+       ESTILOS EXCLUSIVOS - SEÇÃO DA EQUIPE (ISOLADO)
+       ========================================================= */
+    .pm-team-section {
+      padding: 80px 0 !important;
+      background-color: #FFFFFF !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Grid de 3 Colunas no PC */
+    .pm-team-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 28px !important;
+      margin-top: 40px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      
+    }
+
+    /* Card Individual */
+    .pm-team-card {
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 16px !important;
+      padding: 20px !important;
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+      
+      
+    }
+
+    .pm-team-card:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: 0 12px 30px rgba(11, 19, 42, 0.1) !important;
+      border-color: rgba(227, 164, 56, 0.5) !important;
+    }
+
+    /* Container Retangular da Foto */
+    .pm-team-photo {
+      width: 100% !important;
+      height: 360px !important;
+      margin-bottom: 18px !important;
+      border-radius: 10px !important;
+      overflow: hidden !important;
+      background-color: #F1F5F9 !important;
+      
+    }
+
+    /* Imagem com Zoom Suave no Hover */
+    .pm-team-photo img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: top !important;
+      filter: none !important; /* Força cores naturais */
+      transition: transform 0.4s ease !important;
+    }
+
+    .pm-team-card:hover .pm-team-photo img {
+      transform: scale(1.06) !important; /* Zoom suave ao passar o mouse */
+    }
+
+    /* Tipografia dos Cartões */
+    .pm-team-card h4 {
+      font-size: 1.2rem !important;
+      font-weight: 700 !important;
+      color: #0F172A !important;
+      margin: 0 0 8px 0 !important;
+    }
+
+    .pm-team-card .pm-team-role {
+      font-size: 0.88rem !important;
+      font-weight: 600 !important;
+      color: #92400E !important;
+      background-color: #FEF3C7 !important;
+      padding: 5px 14px !important;
+      border-radius: 50px !important;
+      display: inline-block !important;
+    }
+
+    /* =========================================================
+       RESPONSIVIDADE: 2 COLUNAS NO MOBILE
+       ========================================================= */
+    @media (max-width: 768px) {
+      .pm-team-section {
+        padding: 50px 0 !important;
+      }
+
+      .pm-team-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 itens lado a lado no celular */
+        gap: 16px !important;
+      }
+
+      .pm-team-card {
+        padding: 14px !important;
+        border-radius: 12px !important;
+      }
+
+      .pm-team-photo {
+        height: 190px !important; /* Altura otimizada para telas menores */
+      }
+
+      .pm-team-card h4 {
+        font-size: 1.05rem !important;
+      }
+
+      .pm-team-card .pm-team-role {
+        font-size: 0.8rem !important;
+        padding: 4px 10px !important;
+      }
+    }
+  </style>
+
   <div class="container">
     <div class="section__head center" style="text-align: center; margin-bottom: 40px;">
       <span class="eyebrow-tag" style="justify-content: center;"><span class="dot"></span> Notre équipe</span>
       <h2 class="section__title" style="margin-top: 10px;">Les personnes qui portent le projet</h2>
     </div>
 
-    <div class="team-grid reveal-group">
-      <div class="team-card reveal">
-        <div class="team-photo"><img src="https://www.pahidmonde.org/assets/img/team/Isaac_Dizolele_Ndonda_President-cdeatnm.jpg" alt="Isaac Dizolele Ndonda"></div>
+    <div class="pm-team-grid reveal-group">
+      <!-- Membro 1 -->
+      <div class="pm-team-card reveal">
+        <div class="pm-team-photo">
+          <img src="media/IsaacDizoleleNdonda.jpg" alt="Isaac Dizolele Ndonda">
+        </div>
         <h4>Isaac Dizolele Ndonda</h4>
-        <span class="role">Président</span>
+        <span class="pm-team-role">Président</span>
       </div>
-      <div class="team-card reveal">
-        <div class="team-photo"><img src="https://www.pahidmonde.org/assets/img/team/Karine_Heurtebise_Vice_Presidente-eYaxgOv.jpg" alt="Karine Heurtebise"></div>
+
+      <!-- Membro 2 -->
+      <div class="pm-team-card reveal">
+        <div class="pm-team-photo">
+          <img src="media/KarineHeurtebise.jpg" alt="Karine Heurtebise">
+        </div>
         <h4>Karine Heurtebise</h4>
-        <span class="role">Vice Présidente</span>
+        <span class="pm-team-role">Vice Présidente</span>
       </div>
-      <div class="team-card reveal">
-        <div class="team-photo"><img src="https://www.pahidmonde.org/assets/img/team/Antoine_Bouvy_Formateur_et_Expert-dZP0h6G.jpg" alt="Antoine Bouvy"></div>
+
+      <!-- Membro 3 -->
+      <div class="pm-team-card reveal">
+        <div class="pm-team-photo">
+          <img src="media/AntoineBouvy.jpg" alt="Antoine Bouvy">
+        </div>
         <h4>Antoine Bouvy</h4>
-        <span class="role">Formateur et Expert</span>
+        <span class="pm-team-role">Formateur et Expert</span>
       </div>
-      <div class="team-card reveal">
-        <div class="team-photo"><img src="https://www.pahidmonde.org/assets/img/team/Jean_Philippe_PRAT_Formateur_et_Expert-4vgivf_.jpg" alt="Jean Philippe Prat"></div>
+
+      <!-- Membro 4 -->
+      <div class="pm-team-card reveal">
+        <div class="pm-team-photo">
+          <img src="media/JeanPhilippePrat.jpg" alt="Jean Philippe Prat">
+        </div>
         <h4>Jean Philippe Prat</h4>
-        <span class="role">Formateur et Expert</span>
+        <span class="pm-team-role">Formateur et Expert</span>
       </div>
-      <div class="team-card reveal">
-        <div class="team-photo"><img src="https://www.pahidmonde.org/assets/img/team/Nathalie_Legrand_Formateur_et_Expert-ZRfAtGp.jpg" alt="Nathalie Legrand"></div>
+
+      <!-- Membro 5 -->
+      <div class="pm-team-card reveal">
+        <div class="pm-team-photo">
+          <img src="media/NathalieLegrand.jpg" alt="Nathalie Legrand">
+        </div>
         <h4>Nathalie Legrand</h4>
-        <span class="role">Formateur et Expert</span>
+        <span class="pm-team-role">Formateur et Expert</span>
       </div>
-      <div class="team-card reveal">
-        <div class="team-photo"><img src="https://www.pahidmonde.org/assets/img/team/Vincent_Gosty_Formateur_et_Expert-t3_XSSn.jpg" alt="Vincent Gosty"></div>
+
+      <!-- Membro 6 -->
+      <div class="pm-team-card reveal">
+        <div class="pm-team-photo">
+          <img src="media/VincentGosty.jpg" alt="Vincent Gosty">
+        </div>
         <h4>Vincent Gosty</h4>
-        <span class="role">Formateur et Expert</span>
+        <span class="pm-team-role">Formateur et Expert</span>
       </div>
     </div>
   </div>
 </section>
-
 <!-- ============ CTA ============ -->
 <section class="section section--tight">
   <div class="container">
