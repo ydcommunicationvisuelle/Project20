@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notre Équipe — Pahid Monde</title>
+<meta name="description" content="Découvrez les visages et les experts qui portent l'ambition et les projets de l'association PAHID MONDE en France et en Afrique subsaharienne.">
+<link rel="icon" href="media/FAVicon.png">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+  /* =========================================================
+     ESTILOS CUSTOMIZADOS PARA A PÁGINA NOTRE ÉQUIPE
+     ========================================================= */
+  .hero-team--video {
+    position: relative;
+    width: 100%;
+    min-height: 620px; /* Mesma altura generosa do código base */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 120px 20px 80px;
+    background: #0B132A; /* Cor de fundo de segurança */
+    text-align: center;
+  }
+
+  .hero-team__video-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* Foco no topo superior */
+    z-index: 1;
+  }
+
+  .hero-team__video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg, 
+      rgba(11, 19, 42, 0.4) 0%, 
+      rgba(11, 19, 42, 0.8) 100%
+    );
+    z-index: 2;
+  }
+
+  .hero-team__content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #FFFFFF;
+  }
+
+  .hero-team__eyebrow {
+    color: #E3A438;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    display: block;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-team h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.15;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-team p {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: #F1F5F9;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 800px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Responsive Mobile */
+  @media (max-width: 768px) {
+    .hero-team--video {
+      min-height: 520px;
+      padding: 100px 16px 80px;
+    }
+  }
+/* Seção Principale da Equipe */
+  .section--team-page {
+    padding: 90px 0 110px;
+    background-color: #F8FAFC;
+  }
+
+  /* Grid Responsivo da Equipe */
+  .team-grid-featured {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 20px;
+  }
+
+  /* Card Individual de Membro */
+  .team-card-featured {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 35px 25px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(11, 19, 42, 0.04);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .team-card-featured:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(11, 19, 42, 0.1);
+    border-color: rgba(227, 164, 56, 0.4);
+  }
+
+  /* Moldura da Foto Colorida */
+  .team-photo-wrapper {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 24px;
+    border-radius: 50%;
+    padding: 5px;
+    background: linear-gradient(135deg, #E3A438 0%, #F59E0B 100%);
+    box-shadow: 0 8px 20px rgba(227, 164, 56, 0.25);
+  }
+
+  .team-photo-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #F1F5F9;
+  }
+
+  .team-photo-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: none !important; /* Emite fotos 100% coloridas */
+    transition: transform 0.4s ease;
+  }
+
+  .team-card-featured:hover .team-photo-inner img {
+    transform: scale(1.08); /* Efeito suave de zoom ao passar o mouse */
+  }
+
+  /* Informações do Membro */
+  .team-card-featured h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 8px;
+  }
+
+  .team-card-featured .role-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: #FEF3C7;
+    color: #92400E;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 50px;
+    letter-spacing: 0.3px;
+    margin-bottom: 14px;
+  }
+
+  .team-card-featured .team-bio {
+    font-size: 0.95rem;
+    color: #64748B;
+    line-height: 1.6;
+    margin-top: auto;
+  }
+
+  /* Responsividade (Tablets e Celulares) */
+  @media (max-width: 992px) {
+    .team-grid-featured {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-team {
+      padding: 110px 16px 60px;
+    }
+    .section--team-page {
+      padding: 60px 0 80px;
+    }
+    .team-grid-featured {
+      grid-template-columns: 1fr; /* 1 card por linha no celular */
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .team-photo-wrapper {
+      width: 140px;
+      height: 140px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="nav__logo">
+      <img src="media/FAVicon.png" alt="Logo Pahid Monde" class="nav__logo-img">
+      <span>PAHID MONDE</span>
+    </a>
+    <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">Qui sommes-nous</a></li>
+      <li><a href="valeurs.html">Valeurs</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="index.html#activites">Nos activités</a></li>
+      <li><a href="equipe.html" class="active">Équipe</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ============ HERO ÉQUIPE AVEC VIDÉO ============ -->
+<section class="hero-team--video">
+  <video autoplay loop muted playsinline class="hero-team__video-media">
+    <source src="media/Equipe_376334316.webm" type="video/webm">
+  </video>
+  <div class="hero-team__video-overlay"></div>
+  
+  <div class="hero-team__content">
+    <span class="hero-team__eyebrow">Capital Humain</span>
+    <h1>Les personnes qui portent le projet</h1>
+    <p>Une équipe engagée, pluridisciplinaire et passionnée qui met ses compétences et son énergie au service de l'inclusion sociale et du développement durable.</p>
+  </div>
+
+  <!-- SETA DE ROLAGEM ANIMADA -->
+  <a href="#equipe-liste" class="hero-scroll" aria-label="Découvrir l'équipe">
+    <div class="hero-scroll__arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+        <path d="M12 5v14M19 12l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </a>
+</section>
+
+<!-- ============ LISTE DE L'ÉQUIPE ============ -->
+<section class="section--team-page">
+  <div class="container">
+    <div class="team-grid-featured reveal-group">
+
+      <!-- Membro 1 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="https://www.pahidmonde.org/assets/img/team/Isaac_Dizolele_Ndonda_President-cdeatnm.jpg" alt="Isaac Dizolele Ndonda">
+          </div>
+        </div>
+        <h3>Isaac Dizolele Ndonda</h3>
+        <span class="role-badge">Président</span>
+        <p class="team-bio">Oriente et supervise les actions stratégiques de l'association pour maximiser l'impact social.</p>
+      </div>
+
+      <!-- Membro 2 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="https://www.pahidmonde.org/assets/img/team/Karine_Heurtebise_Vice_Presidente-eYaxgOv.jpg" alt="Karine Heurtebise">
+          </div>
+        </div>
+        <h3>Karine Heurtebise</h3>
+        <span class="role-badge">Vice Présidente</span>
+        <p class="team-bio">Coordonne et veille à la mise en œuvre opérationnelle des projets.</p>
+      </div>
+
+      <!-- Membro 3 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="https://www.pahidmonde.org/assets/img/team/Antoine_Bouvy_Formateur_et_Expert-dZP0h6G.jpg" alt="Antoine Bouvy">
+          </div>
+        </div>
+        <h3>Antoine Bouvy</h3>
+        <span class="role-badge">Formateur et Expert</span>
+        <p class="team-bio">Apporte son expertise technique et anime les modules de formation axés sur le développement durable.</p>
+      </div>
+
+      <!-- Membro 4 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="https://www.pahidmonde.org/assets/img/team/Jean_Philippe_PRAT_Formateur_et_Expert-4vgivf_.jpg" alt="Jean Philippe Prat">
+          </div>
+        </div>
+        <h3>Jean Philippe Prat</h3>
+        <span class="role-badge">Formateur et Expert</span>
+        <p class="team-bio">Apporte son expertise technique et anime les modules de formation axés sur le développement durable.</p>
+      </div>
+
+      <!-- Membro 5 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="https://www.pahidmonde.org/assets/img/team/Nathalie_Legrand_Formateur_et_Expert-ZRfAtGp.jpg" alt="Nathalie Legrand">
+          </div>
+        </div>
+        <h3>Nathalie Legrand</h3>
+        <span class="role-badge">Formateur et Expert</span>
+        <p class="team-bio">Apporte son expertise technique et anime les modules de formation axés sur le développement durable.</p>
+      </div>
+
+      <!-- Membro 6 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="https://www.pahidmonde.org/assets/img/team/Vincent_Gosty_Formateur_et_Expert-t3_XSSn.jpg" alt="Vincent Gosty">
+          </div>
+        </div>
+        <h3>Vincent Gosty</h3>
+        <span class="role-badge">Formateur et Expert</span>
+        <p class="team-bio">Apporte son expertise technique et anime les modules de formation axés sur le développement durable.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="media/Horizon-LOGO-PAHID-MONDE copie.png" alt="Logo Pahid Monde">
+        <p>PAHID MONDE favorise une cohésion sociale entre les nations du nord et celles du sud pour tendre vers un monde plus équilibré.</p>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@PahidMonde" aria-label="YouTube" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/youtube-aWufNVX.png" alt=""></a>
+          <a href="https://www.facebook.com/people/Pahid-Monde-Developpement/61584869464890/" aria-label="Facebook" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/facebook-qauTx-6.png" alt=""></a>
+          <a href="https://www.linkedin.com/company/pahid-monde-d%C3%A9veloppement/" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/linkedin-lTQRe2D.png" alt=""></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li><a href="valeurs.html">Valeurs</a></li>
+          <li><a href="missions.html">Missions</a></li>
+          <li><a href="equipe.html">Équipe</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>18 Bis Avenue Lalande<br>77500 Chelles</li>
+          <li><a href="mailto:contact@pahidmonde.org">contact@pahidmonde.org</a></li>
+          <li><a href="tel:+33987552939">Fixe : +33 9 87 55 29 39</a></li>
+          <li><a href="tel:+33767975886">Mobile : +33 7 67 97 58 86</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 — Pahid Monde. Tous droits réservés.</p>
+      <button type="button" data-open-rgpd>Politique de confidentialité (RGPD)</button>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay">
+  <div class="modal">
+    <h3>Politique de confidentialité</h3>
+    <p>Nous nous engageons à respecter la vie privée des utilisateurs et à traiter leurs données personnelles conformément à la réglementation en vigueur, notamment le Règlement Général sur la Protection des Données (RGPD).</p>
+    <button type="button" class="btn btn--outline-dark" data-close-rgpd>Fermer</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
