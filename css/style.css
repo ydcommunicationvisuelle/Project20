@@ -387,6 +387,50 @@ button{ font-family: inherit; cursor: pointer; }
   overflow: hidden;
 }
 .bridge-divider svg{ position: absolute; top: -1px; left: 0; width: 100%; height: 65px; }
+/* Ajuste da equipe com imagens em preenchimento total (fill) */
+.team-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  justify-content: center !important;
+  justify-items: center !important;
+  gap: 24px !important;
+}
+
+.team-card {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 100% !important;
+  overflow: hidden !important; /* Evita que a foto ultrapasse a borda do card */
+}
+
+.team-photo {
+  margin: 0 auto 16px auto !important;
+  width: 100% !important;
+  height: 260px !important; /* Define a altura fixa do contêiner da foto */
+  overflow: hidden !important;
+  border-radius: 8px !important; /* Mantém cantos levemente arredondados se desejar */
+}
+
+.team-photo img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* Preenche todo o espaço sem distorcer a imagem */
+  object-position: center !important; /* Centraliza o rosto na foto */
+}
+
+/* Regra para Celulares */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+  
+  .team-photo {
+    height: 200px !important; /* Altura ajustada para telas menores */
+  }
+}
 
 /* ---------------- About / two-col ---------------- */
 .about-grid{
