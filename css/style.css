@@ -276,8 +276,8 @@ button{ font-family: inherit; cursor: pointer; }
 }
 
 
-/* ---------------- Hero ---------------- */
-.hero{
+/* ---------------- Hero (Desktop) ---------------- */
+.hero {
   position: relative;
   min-height: 820px;
   max-height: 820px;
@@ -287,6 +287,17 @@ button{ font-family: inherit; cursor: pointer; }
   overflow: hidden;
   padding-top: 120px;
 }
+
+/* ---------------- Hero (Mobile Adjust) ---------------- */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 400px;      /* Garante que ocupe a tela inteira do celular */
+    max-height: 90%;       /* Remove a limitação para o conteúdo expandir livremente */
+    padding-top: 140px;     /* Espaço extra para o menu mobile/header */
+    padding-bottom: 0px;   /* Garante respiro na parte inferior */
+  }
+}
+
 .hero__bg{
   position: absolute;
   inset: 0;
