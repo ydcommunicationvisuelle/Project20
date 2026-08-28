@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Médias & Galerie — Pahid Monde</title>
+<meta name="description" content="Découvrez nos réalisations en images et suivez nos actualités sur nos réseaux sociaux.">
+<link rel="icon" href="media/FAVicon.png">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ================= AJUSTES DO HERO DA PÁGINA MÉDIAS ================= */
+.hero {
+  min-height: 820px !important;
+  max-height: auto !important;
+  padding-bottom: 60px !important;
+}
+
+.hero__content {
+  min-height: auto !important; /* Anula o 820px do CSS global */
+  max-height: 700px !important;
+  padding-bottom: 40px !important;
+  justify-content: center !important; /* Centraliza o bloco horizontalmente */
+  text-align: center !important;      /* Centraliza o texto internamente */
+}
+
+.hero__text-block {
+  max-width: 720px;
+  margin: 0 auto !important;          /* Garante a centralização perfeita do bloco */
+}
+
+.hero__lead {
+  margin-left: auto !important;       /* Centraliza o parágrafo de instrução */
+  margin-right: auto !important;
+}
+
+.hero::before,
+.hero::after,
+.hero__bg::after,
+.hero__overlay {
+  opacity: 0.4 !important;
+}
+
+/* Ajuste Responsivo para manter a centralização em telas grandes */
+@media (min-width: 992px) {
+  .hero__content {
+    max-width: 100% !important;
+    padding-left: 1.5rem !important;  /* Remove o recuo antigo à esquerda */
+    padding-right: 1.5rem !important;
+    margin-left: auto !important;
+    justify-content: center !important;
+  }
+}
+  /* Estilos da Seção Social */
+  .social-section {
+    padding: 5rem 0;
+    background-color: #f8f9fa;
+  }
+
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .social-card {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  }
+
+  .social-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  }
+
+  .social-card.instagram:hover { border-color: #E1306C; }
+  .social-card.youtube:hover { border-color: #FF0000; }
+  .social-card.facebook:hover { border-color: #1877F2; }
+  .social-card.linkedin:hover { border-color: #0A66C2; }
+
+  .social-card__icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .social-card__icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .social-card h3 {
+    font-size: 1.15rem;
+    color: #1a1a1a;
+    margin: 0 0 0.4rem 0;
+    font-weight: 700;
+  }
+
+  .social-card span {
+    font-size: 0.88rem;
+    color: #6c757d;
+  }
+
+  @media (max-width: 992px) {
+    .social-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .social-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .social-card {
+      padding: 1.5rem 0.8rem;
+    }
+  }
+  /* ================= BOUTON DE SCROLL (FLÈCHE) ================= */
+.hero__scroll {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(16, 27, 51, 0.4);
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  animation: bounce 2s infinite;
+}
+
+.hero__scroll svg {
+  width: 24px;
+  height: 24px;
+}
+
+.hero__scroll:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(16, 27, 51, 0.8);
+}
+
+/* Animation de rebond */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-8px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-4px);
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="nav__logo">
+      <img src="media/FAVicon.png" alt="Logo Pahid Monde" class="nav__logo-img">
+      <span>PAHID MONDE</span>
+    </a>
+    <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">Qui sommes-nous</a></li>
+      <li><a href="valeurs.html">Valeurs</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="index.html#activites">Nos activités</a></li>
+      <li><a href="equipe.html">Équipe</a></li>
+      <li class="active"><a href="media.html">Médias</a></li>
+      <li><a href="partenaires.html">Partenaires</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__bg">
+    <video autoplay loop muted playsinline>
+      <source src="media/media_497866592.mp4" type="video/mp4">
+    </video>
+  </div>
+  
+  <div class="container hero__content">
+    <div class="hero__text-block">
+      <h1 class="hero__title">Nos Médias &amp; Réalisations</h1>
+      <p class="hero__lead">Suivez nos activités sur le terrain, nos projets de développement et découvrez nos dernières actualités en images et sur nos réseaux sociaux.</p>
+    </div>
+  </div>
+
+  <!-- Flèche de défilement vers le bas -->
+  <a href="#social-section" class="hero__scroll" aria-label="Défiler vers le bas">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
+  </a>
+</section>
+
+<!-- ============ SEÇÃO REDES SOCIAIS ============ -->
+<section class="social-section" id="social-section">
+  <div class="container">
+    <div class="section__head center">
+      <span class="eyebrow">Réseaux Sociaux</span>
+      <h2 class="section__title">Suivez nos réalisations au quotidien</h2>
+      <p style="margin-top: 1rem; color: #6c757d; max-width: 650px; margin-left: auto; margin-right: auto;">
+        Restez informé de nos interventions, événements et reportages de terrain en vous abonnant à nos canaux officiels.
+      </p>
+    </div>
+
+    <div class="social-grid">
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@PahidMonde" target="_blank" rel="noopener" class="social-card youtube">
+        <div class="social-card__icon">
+          <img src="https://www.pahidmonde.org/assets/img/media_social/youtube-aWufNVX.png" alt="YouTube Pahid Monde">
+        </div>
+        <h3>YouTube</h3>
+        <span>@PahidMonde</span>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/people/Pahid-Monde-Developpement/61584869464890/" target="_blank" rel="noopener" class="social-card facebook">
+        <div class="social-card__icon">
+          <img src="https://www.pahidmonde.org/assets/img/media_social/facebook-qauTx-6.png" alt="Facebook Pahid Monde">
+        </div>
+        <h3>Facebook</h3>
+        <span>Pahid-Monde-Developpement</span>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/company/pahid-monde-d%C3%A9veloppement/" target="_blank" rel="noopener" class="social-card linkedin">
+        <div class="social-card__icon">
+          <img src="https://www.pahidmonde.org/assets/img/media_social/linkedin-lTQRe2D.png" alt="LinkedIn Pahid Monde">
+        </div>
+        <h3>LinkedIn</h3>
+        <span>pahid-monde-développement</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIE PHOTO ============ -->
+<section class="section section--light" id="galerie">
+  <div class="container">
+    <div class="section__head center">
+      <span class="eyebrow reveal">Galerie Photo</span>
+      <h2 class="section__title reveal">Nos actions en images</h2>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-item"><img src="media/00001Galerie.jpg" alt="Pahid Monde Galerie 1" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00002Galerie.jpg" alt="Pahid Monde Galerie 2" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00003Galerie.jpg" alt="Pahid Monde Galerie 3" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00004Galerie.jpg" alt="Pahid Monde Galerie 4" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00005Galerie.jpg" alt="Pahid Monde Galerie 5" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00006Galerie.jpg" alt="Pahid Monde Galerie 6" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00007Galerie.jpg" alt="Pahid Monde Galerie 7" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00008Galerie.jpg" alt="Pahid Monde Galerie 8" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00009Galerie.jpg" alt="Pahid Monde Galerie 9" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00010Galerie.jpg" alt="Pahid Monde Galerie 10" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00011Galerie.jpg" alt="Pahid Monde Galerie 11" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00012Galerie.jpg" alt="Pahid Monde Galerie 12" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00013Galerie.jpg" alt="Pahid Monde Galerie 13" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00014Galerie.jpg" alt="Pahid Monde Galerie 14" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00015Galerie.jpg" alt="Pahid Monde Galerie 15" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00016Galerie.jpg" alt="Pahid Monde Galerie 16" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00017Galerie.jpg" alt="Pahid Monde Galerie 17" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00018Galerie.jpg" alt="Pahid Monde Galerie 18" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00019Galerie.jpg" alt="Pahid Monde Galerie 19" loading="lazy"></div>
+      <div class="gallery-item"><img src="media/00020Galerie.jpg" alt="Pahid Monde Galerie 20" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER COMPACTO ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      
+      <!-- Brand / Sobre -->
+      <div class="footer-brand">
+        <img src="media/Horizon-LOGO-PAHID-MONDE copie.png" alt="Logo Pahid Monde">
+        <p>PAHID MONDE favorise une cohésion sociale entre les nations du nord et celles du sud pour tendre vers un monde plus équilibré.</p>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@PahidMonde" aria-label="YouTube" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/youtube-aWufNVX.png" alt=""></a>
+          <a href="https://www.facebook.com/people/Pahid-Monde-Developpement/61584869464890/" aria-label="Facebook" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/facebook-qauTx-6.png" alt=""></a>
+          <a href="https://www.linkedin.com/company/pahid-monde-d%C3%A9veloppement/" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/linkedin-lTQRe2D.png" alt=""></a>
+        </div>
+      </div>
+      
+      <!-- Navegação (2 colunas internas) -->
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li><a href="valeurs.html">Valeurs</a></li>
+          <li><a href="missions.html">Missions</a></li>
+          <li><a href="equipe.html">Équipe</a></li>
+          <li><a href="media.html">Médias</a></li>
+          <li><a href="partenaires.html">Partenaires</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Sièges (Mesmo nível / alinhado horizontalmente) -->
+      <div class="footer-col">
+        <h5>Nos Sièges</h5>
+        <div class="footer-offices">
+          <!-- Siège France -->
+          <div class="office-card">
+            <div class="office-header">
+              <img src="media/france.png" alt="Drapeau France" class="office-flag">
+              <span class="office-title">France</span>
+            </div>
+            <div class="office-details">
+              <address>18 Bis Ave Lalande, 77500 Chelles</address>
+              <div class="office-contacts">
+                <a href="mailto:contact@pahidmonde.org">contact@pahidmonde.org</a>
+                <a href="tel:+33987552939">Fixe: +33 9 87 55 29 39</a>
+                <a href="tel:+33767975886">WA: +33 7 67 97 58 86</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Siège RDC -->
+          <div class="office-card">
+            <div class="office-header">
+              <img src="media/rfdc.png" alt="Drapeau RDC" class="office-flag">
+              <span class="office-title">R.D. Congo</span>
+            </div>
+            <div class="office-details">
+              <address>Conc. KAGE n°4, Limete, Kinshasa</address>
+              <div class="office-contacts">
+                <a href="mailto:contact@pahidmonde.org">contact@pahidmonde.org</a>
+                <a href="tel:+243905423023">Fixe: +243 905 423 023</a>
+                <a href="tel:+243896033847">WA: +243 896 033 847</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 — Pahid Monde. Tous droits réservés.</p>
+      <button type="button" data-open-rgpd>Politique de confidentialité (RGPD)</button>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay">
+  <div class="modal">
+    <h3>Politique de confidentialité</h3>
+    <p>Nous nous engageons à respecter la vie privée des utilisateurs et à traiter leurs données personnelles conformément à la réglementation en vigueur, notamment le Règlement Général sur la Protection des Données (RGPD).</p>
+    <button type="button" class="btn btn--outline-dark" data-close-rgpd>Fermer</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var items = document.querySelectorAll('.gallery-item');
+    var grid = document.querySelector('.gallery-grid');
+
+    if (items.length > 0) {
+      items.forEach(function (item) {
+        item.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isZoomed = this.classList.contains('is-zoomed');
+
+          items.forEach(function (el) { el.classList.remove('is-zoomed'); });
+          if (grid) grid.classList.remove('has-active-zoom');
+
+          if (!isZoomed) {
+            this.classList.add('is-zoomed');
+            if (grid) grid.classList.add('has-active-zoom');
+          }
+        });
+      });
+
+      document.addEventListener('click', function () {
+        items.forEach(function (el) { el.classList.remove('is-zoomed'); });
+        if (grid) grid.classList.remove('has-active-zoom');
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

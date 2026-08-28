@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos Partenaires — Pahid Monde</title>
+<meta name="description" content="Découvrez les entreprises et institutions qui font confiance à la mission de Pahid Monde.">
+<link rel="icon" href="media/FAVicon.png">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ================= HERO (ISOLÉ) ================= */
+.hero {
+  min-height: 820px !important;
+  max-height: auto !important;
+  padding-bottom: 60px !important;
+}
+
+.hero__content {
+  min-height: auto !important;
+  padding-bottom: 40px !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.hero__text-block {
+  max-width: 720px;
+  margin: 0 auto !important;
+}
+
+.hero__lead {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.hero::before,
+.hero::after,
+.hero__bg::after,
+.hero__overlay {
+  opacity: 0.4 !important;
+}
+
+@media (min-width: 992px) {
+  .hero__content {
+    max-width: 100% !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    margin-left: auto !important;
+    justify-content: center !important;
+  }
+}
+
+/* Flèche de défilement */
+.hero__scroll {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(16, 27, 51, 0.4);
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  animation: bounce 2s infinite;
+}
+
+.hero__scroll svg {
+  width: 24px;
+  height: 24px;
+}
+
+.hero__scroll:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(16, 27, 51, 0.8);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-8px); }
+  60% { transform: translateX(-50%) translateY(-4px); }
+}
+
+/* ================= SECTION PARTENAIRES (GRID FIXE AGRANDIE) ================= */
+.partners-section {
+  padding: 5rem 0;
+  background: #f8f9fa;
+}
+
+.partners-intro {
+  max-width: 860px;
+  margin: 0 auto 4rem auto;
+  text-align: center;
+}
+
+.partners-intro .eyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold-deep, #c59d5f);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.partners-intro h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.2rem;
+  line-height: 1.25;
+}
+
+.partners-intro p {
+  font-size: 1.1rem;
+  color: #4b5563;
+  line-height: 1.8;
+}
+
+.partners-group {
+  margin-bottom: 4.5rem;
+}
+
+.partners-group:last-child {
+  margin-bottom: 0;
+}
+
+.partners-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.partners-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--gold-deep, #c59d5f);
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+}
+
+/* Grille des Logos (Agrandie pour plus de volume) */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.partner-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  height: 160px;
+  padding: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.09);
+  border-color: var(--gold-deep, #c59d5f);
+}
+
+.partner-card img {
+  max-width: 100%;
+  max-height: 110px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(10%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.partner-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.04);
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="nav__logo">
+      <img src="media/FAVicon.png" alt="Logo Pahid Monde" class="nav__logo-img">
+      <span>PAHID MONDE</span>
+    </a>
+    <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">Qui sommes-nous</a></li>
+      <li><a href="valeurs.html">Valeurs</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="index.html#activites">Nos activités</a></li>
+      <li><a href="equipe.html">Équipe</a></li>
+      <li><a href="media.html">Médias</a></li>
+      <li class="active"><a href="partenaires.html">Partenaires</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__bg">
+    <video autoplay loop muted playsinline>
+      <source src="media/Partenaires_492388600.webm" type="video/webm">
+    </video>
+  </div>
+  
+  <div class="container hero__content">
+    <div class="hero__text-block">
+      <h1 class="hero__title">Nos Partenaires</h1>
+      <p class="hero__lead">Ensemble, nous construisons des ponts entre les nations pour un développement durable, équitable et solidaire.</p>
+    </div>
+  </div>
+
+  <a href="#partenaires-content" class="hero__scroll" aria-label="Défiler vers le bas">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
+  </a>
+</section>
+
+<!-- ============ SECTION PARTENAIRES (GRID FIXE AGRANDIE) ============ -->
+<section class="partners-section" id="partenaires-content">
+  <div class="container">
+    
+    <!-- Texte d'introduction valorisé -->
+    <div class="partners-intro">
+      <span class="eyebrow">Alliances &amp; Synergie</span>
+      <h2>L'Excellence au service d'une vision partagée</h2>
+      <p>
+        Derrière chaque grande avancée se trouvent des alliances stratégiques fortes. Nous avons le privilège de collaborer avec des institutions prestigieuses et des acteurs économiques majeurs qui partagent notre exigence d'impact et de responsabilité. Ensemble, nous unissons nos expertises pour transformer durablement les défis en opportunités et bâtir un avenir équitable à travers les continents.
+      </p>
+    </div>
+
+    <!-- 1. ENTREPRISES PARTENAIRES -->
+    <div class="partners-group">
+      <h3 class="partners-title">Entreprises Partenaires</h3>
+      <div class="partners-grid">
+        <div class="partner-card"><img src="media/CNSS.png" alt="CNSS"></div>
+        <div class="partner-card"><img src="media/EE.png" alt="EE"></div>
+        <div class="partner-card"><img src="media/OCC.png" alt="OCC"></div>
+        <div class="partner-card"><img src="media/COBIL.png" alt="COBIL"></div>
+        <div class="partner-card"><img src="media/DGRAD.jpg" alt="DGRAD"></div>
+        <div class="partner-card"><img src="media/INPP.jpg" alt="INPP"></div>
+        <div class="partner-card"><img src="media/OVDLOGO.jpg" alt="OVD"></div>
+      </div>
+    </div>
+
+    <!-- 2. INSTITUTIONS PARTENAIRES -->
+    <div class="partners-group">
+      <h3 class="partners-title">Institutions Partenaires</h3>
+      <div class="partners-grid">
+        <div class="partner-card"><img src="media/MINISTERE DE LA SANTE.png" alt="Ministère de la Santé"></div>
+        <div class="partner-card"><img src="media/MINISTERE DU PLAN.png" alt="Ministère du Plan"></div>
+        <div class="partner-card"><img src="media/MINISTERE PRIMAIRE E SECONDAIRE ET TECHINIQUE.png" alt="Ministère Éducation"></div>
+        <div class="partner-card"><img src="media/PROPARCO.png" alt="Proparco"></div>
+        <div class="partner-card"><img src="media/USAID.png" alt="USAID"></div>
+        <div class="partner-card"><img src="media/AGENCE JAPONAISE.jpg" alt="Agence Japonaise"></div>
+        <div class="partner-card"><img src="media/EMBASSY OF CANADA.jpg" alt="Embassy of Canada"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <div>
+        <h2>Devenez partenaire de PAHID MONDE</h2>
+        <p>Unissons nos forces pour soutenir des projets concrets à fort impact social.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="contact.html" class="btn btn--gold">Nous contacter</a>
+        <a href="tel:+33767975886" class="btn btn--outline">+33 7 67 97 58 86</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER COMPACTO ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      
+      <!-- Brand / Sobre -->
+      <div class="footer-brand">
+        <img src="media/Horizon-LOGO-PAHID-MONDE copie.png" alt="Logo Pahid Monde">
+        <p>PAHID MONDE favorise une cohésion sociale entre les nations du nord et celles du sud pour tendre vers un monde plus équilibré.</p>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@PahidMonde" aria-label="YouTube" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/youtube-aWufNVX.png" alt=""></a>
+          <a href="https://www.facebook.com/people/Pahid-Monde-Developpement/61584869464890/" aria-label="Facebook" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/facebook-qauTx-6.png" alt=""></a>
+          <a href="https://www.linkedin.com/company/pahid-monde-d%C3%A9veloppement/" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/linkedin-lTQRe2D.png" alt=""></a>
+        </div>
+      </div>
+      
+      <!-- Navegação (2 colunas internas) -->
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li><a href="valeurs.html">Valeurs</a></li>
+          <li><a href="missions.html">Missions</a></li>
+          <li><a href="equipe.html">Équipe</a></li>
+          <li><a href="media.html">Médias</a></li>
+          <li><a href="partenaires.html">Partenaires</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Sièges (Mesmo nível / alinhado horizontalmente) -->
+      <div class="footer-col">
+        <h5>Nos Sièges</h5>
+        <div class="footer-offices">
+          <!-- Siège France -->
+          <div class="office-card">
+            <div class="office-header">
+              <img src="media/france.png" alt="Drapeau France" class="office-flag">
+              <span class="office-title">France</span>
+            </div>
+            <div class="office-details">
+              <address>18 Bis Ave Lalande, 77500 Chelles</address>
+              <div class="office-contacts">
+                <a href="mailto:contact@pahidmonde.org">contact@pahidmonde.org</a>
+                <a href="tel:+33987552939">Fixe: +33 9 87 55 29 39</a>
+                <a href="tel:+33767975886">WA: +33 7 67 97 58 86</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Siège RDC -->
+          <div class="office-card">
+            <div class="office-header">
+              <img src="media/rfdc.png" alt="Drapeau RDC" class="office-flag">
+              <span class="office-title">R.D. Congo</span>
+            </div>
+            <div class="office-details">
+              <address>Conc. KAGE n°4, Limete, Kinshasa</address>
+              <div class="office-contacts">
+                <a href="mailto:contact@pahidmonde.org">contact@pahidmonde.org</a>
+                <a href="tel:+243905423023">Fixe: +243 905 423 023</a>
+                <a href="tel:+243896033847">WA: +243 896 033 847</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 — Pahid Monde. Tous droits réservés.</p>
+      <button type="button" data-open-rgpd>Politique de confidentialité (RGPD)</button>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay">
+  <div class="modal">
+    <h3>Politique de confidentialité</h3>
+    <p>Nous nous engageons à respecter la vie privée des utilisateurs et à traiter leurs données personnelles conformément à la réglementation en vigueur, notamment le Règlement Général sur la Protection des Données (RGPD).</p>
+    <button type="button" class="btn btn--outline-dark" data-close-rgpd>Fermer</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

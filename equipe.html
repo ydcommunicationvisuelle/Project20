@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notre Équipe — Pahid Monde</title>
+<meta name="description" content="Découvrez les visages et les experts qui portent l'ambition et les projets de l'association PAHID MONDE en France et en Afrique subsaharienne.">
+<link rel="icon" href="media/FAVicon.png">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* =========================================================
+   HERO ISOLADO COM VÍDEO (SOLUÇÃO DEFINITIVA ANTI-MARGEM MOBILE)
+   ========================================================= */
+
+/* Container do Hero com Grid Infalível */
+section.hero-team-custom-section {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 820px !important;
+  height: 620px !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #0B132A !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+/* Força Vídeo, Overlay e Conteúdo a ocuparem exatamente o mesmo espaço de Grid */
+.hero-team-custom-media,
+.hero-team-custom-overlay,
+.hero-team-custom-content {
+  grid-area: 1 / 1 !important;
+}
+
+/* Mídia do Vídeo com Cobertura Total */
+.hero-team-custom-media {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  z-index: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Overlay Escuro */
+.hero-team-custom-overlay {
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    180deg, 
+    rgba(11, 19, 42, 0.45) 0%, 
+    rgba(11, 19, 42, 0.85) 100%
+  ) !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+/* Conteúdo Centralizado */
+.hero-team-custom-content {
+  position: relative !important;
+  z-index: 3 !important;
+  max-width: 900px !important;
+  width: 100% !important;
+  padding: 120px 20px 80px !important;
+  margin: 0 auto !important;
+  color: #FFFFFF !important;
+  box-sizing: border-box !important;
+}
+
+.hero-team-custom-eyebrow {
+  color: #E3A438 !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  font-size: 0.9rem !important;
+  margin-bottom: 12px !important;
+  display: block !important;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4) !important;
+}
+
+.hero-team-custom-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem) !important;
+  font-weight: 700 !important;
+  margin: 0 0 18px 0 !important;
+  line-height: 1.2 !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.hero-team-custom-desc {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem) !important;
+  color: #F1F5F9 !important;
+  line-height: 1.7 !important;
+  margin: 0 auto !important;
+  max-width: 800px !important;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Seta de Rolagem Animada */
+.hero-team-custom-scroll {
+  position: absolute !important;
+  bottom: 25px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 4 !important;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  opacity: 0.8 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.hero-team-custom-scroll:hover {
+  opacity: 1 !important;
+  color: #E3A438 !important;
+}
+
+.hero-team-custom-arrow {
+  width: 36px !important;
+  height: 36px !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  animation: heroBounce 2s infinite !important;
+}
+
+@keyframes heroBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+/* =========================================================
+   FORÇA O ZOOM DO VÍDEO NO MOBILE PARA MATAR A MARGEM
+   ========================================================= */
+@media (max-width: 768px) {
+  section.hero-team-custom-section {
+    min-height: 560px !important;
+    height: 560px !important;
+  }
+
+  .hero-team-custom-media {
+    /* O scale obriga o vídeo a extrapolar a caixa e ser cortado pelo overflow:hidden */
+    transform: scale(1.65) !important;
+    transform-origin: center center !important;
+  }
+
+  .hero-team-custom-content {
+    padding: 90px 16px 60px !important;
+  }
+}
+
+/* =========================================================
+   ESTILOS DA EQUIPE
+   ========================================================= */
+.section--team-page {
+  padding: 90px 0 110px;
+  background-color: #F8FAFC;
+}
+
+.team-grid-featured {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 20px;
+}
+
+.team-card-featured {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 35px 25px 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(11, 19, 42, 0.04);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.team-card-featured:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(11, 19, 42, 0.1);
+  border-color: rgba(227, 164, 56, 0.4);
+}
+
+.team-photo-wrapper {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg, #E3A438 0%, #F59E0B 100%);
+  box-shadow: 0 8px 20px rgba(227, 164, 56, 0.25);
+}
+
+.team-photo-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #F1F5F9;
+}
+
+.team-photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  object-position: top !important;
+  filter: none !important;
+  transition: transform 0.4s ease;
+}
+
+.team-card-featured:hover .team-photo-inner img {
+  transform: scale(1.08);
+}
+
+.team-card-featured h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 8px;
+}
+
+.team-card-featured .role-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: #FEF3C7;
+  color: #92400E;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 50px;
+  letter-spacing: 0.3px;
+  margin-bottom: 14px;
+}
+
+.team-card-featured .team-bio {
+  font-size: 0.95rem;
+  color: #64748B;
+  line-height: 1.6;
+  margin-top: auto;
+}
+
+@media (max-width: 992px) {
+  .team-grid-featured {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section--team-page {
+    padding: 60px 0 80px;
+  }
+
+  .team-grid-featured {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .team-photo-wrapper {
+    width: 140px;
+    height: 140px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="nav__logo">
+      <img src="media/FAVicon.png" alt="Logo Pahid Monde" class="nav__logo-img">
+      <span>PAHID MONDE</span>
+    </a>
+    <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">Qui sommes-nous</a></li>
+      <li><a href="valeurs.html">Valeurs</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="index.html#activites">Nos activités</a></li>
+      <li><a href="equipe.html">Équipe</a></li>
+      <li><a href="media.html">Médias</a></li>
+      <li><a href="partenaires.html">Partenaires</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ============ HERO ÉQUIPE AVEC VIDÉO (CLASSES ISOLADAS) ============ -->
+<section class="hero-team-custom-section">
+  <video autoplay loop muted playsinline class="hero-team-custom-media">
+    <source src="media/Equipe_376334316.webm" type="video/webm">
+  </video>
+  <div class="hero-team-custom-overlay"></div>
+  
+  <div class="hero-team-custom-content">
+    <span class="hero-team-custom-eyebrow">Capital Humain</span>
+    <h1 class="hero-team-custom-title">Les personnes qui <br>portent le projet
+    <p class="hero-team-custom-desc">Une équipe engagée, pluridisciplinaire et passionnée qui met ses compétences et son énergie au service de l'inclusion sociale et du développement durable.</p>
+  </div>
+
+  <a href="#equipe-liste" class="hero-team-custom-scroll" aria-label="Découvrir l'équipe">
+    <div class="hero-team-custom-arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+        <path d="M12 5v14M19 12l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </a>
+</section>
+
+<!-- ============ LISTE DE L'ÉQUIPE ============ -->
+<section class="section--team-page" id="equipe-liste">
+  <div class="container">
+    <div class="team-grid-featured reveal-group">
+
+      <!-- Membro 1 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="media/IsaacDizoleleNdonda.jpg" alt="Isaac Dizolele Ndonda">
+          </div>
+        </div>
+        <h3>Isaac Dizolele Ndonda</h3>
+        <span class="role-badge">Président</span>
+        <p class="team-bio">Oriente et supervise les actions stratégiques de l'association pour maximiser l'impact social.</p>
+      </div>
+
+      <!-- Membro 2 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="media/KarineHeurtebise.jpg" alt="Karine Heurtebise">
+          </div>
+        </div>
+        <h3>Karine Heurtebise</h3>
+        <span class="role-badge">Vice Présidente</span>
+        <p class="team-bio">Coordonne et veille à la mise en œuvre opérationnelle des projets.</p>
+      </div>
+
+      <!-- Membro 3 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="media/AntoineBouvy.jpg" alt="Antoine Bouvy">
+          </div>
+        </div>
+        <h3>Antoine Bouvy</h3>
+        <span class="role-badge">Formateur et Expert</span>
+        <p class="team-bio">Apporte son expertise technique et anime les modules de formation axés sur le développement durable.</p>
+      </div>
+
+      <!-- Membro 4 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="media/JeanPhilippePrat.jpg" alt="Jean Philippe Prat">
+          </div>
+        </div>
+        <h3>Jean Philippe Prat</h3>
+        <span class="role-badge">Formateur et Expert</span>
+        <p class="team-bio">Apporte son expertise technique et anime les modules de formation axés sur le développement durable.</p>
+      </div>
+
+      <!-- Membro 5 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="media/NathalieLegrand.jpg" alt="Nathalie Legrand">
+          </div>
+        </div>
+        <h3>Nathalie Legrand</h3>
+        <span class="role-badge">Formateur et Expert</span>
+        <p class="team-bio">Apporte son expertise technique et anime les modules de formation axés sur le développement durable.</p>
+      </div>
+
+      <!-- Membro 6 -->
+      <div class="team-card-featured reveal">
+        <div class="team-photo-wrapper">
+          <div class="team-photo-inner">
+            <img src="media/VincentGosty.jpg" alt="Vincent Gosty">
+          </div>
+        </div>
+        <h3>Vincent Gosty</h3>
+        <span class="role-badge">Formateur et Expert</span>
+        <p class="team-bio">Apporte son expertise technique et anime les modules de formation axés sur le développement durable.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER COMPACTO ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      
+      <!-- Brand / Sobre -->
+      <div class="footer-brand">
+        <img src="media/Horizon-LOGO-PAHID-MONDE copie.png" alt="Logo Pahid Monde">
+        <p>PAHID MONDE favorise une cohésion sociale entre les nations du nord et celles du sud pour tendre vers un monde plus équilibré.</p>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@PahidMonde" aria-label="YouTube" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/youtube-aWufNVX.png" alt=""></a>
+          <a href="https://www.facebook.com/people/Pahid-Monde-Developpement/61584869464890/" aria-label="Facebook" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/facebook-qauTx-6.png" alt=""></a>
+          <a href="https://www.linkedin.com/company/pahid-monde-d%C3%A9veloppement/" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="https://www.pahidmonde.org/assets/img/media_social/linkedin-lTQRe2D.png" alt=""></a>
+        </div>
+      </div>
+      
+      <!-- Navegação (2 colunas internas) -->
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li><a href="valeurs.html">Valeurs</a></li>
+          <li><a href="missions.html">Missions</a></li>
+          <li><a href="equipe.html">Équipe</a></li>
+          <li><a href="media.html">Médias</a></li>
+          <li><a href="partenaires.html">Partenaires</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Sièges (Mesmo nível / alinhado horizontalmente) -->
+      <div class="footer-col">
+        <h5>Nos Sièges</h5>
+        <div class="footer-offices">
+          <!-- Siège France -->
+          <div class="office-card">
+            <div class="office-header">
+              <img src="media/france.png" alt="Drapeau France" class="office-flag">
+              <span class="office-title">France</span>
+            </div>
+            <div class="office-details">
+              <address>18 Bis Ave Lalande, 77500 Chelles</address>
+              <div class="office-contacts">
+                <a href="mailto:contact@pahidmonde.org">contact@pahidmonde.org</a>
+                <a href="tel:+33987552939">Fixe: +33 9 87 55 29 39</a>
+                <a href="tel:+33767975886">WA: +33 7 67 97 58 86</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Siège RDC -->
+          <div class="office-card">
+            <div class="office-header">
+              <img src="media/rfdc.png" alt="Drapeau RDC" class="office-flag">
+              <span class="office-title">R.D. Congo</span>
+            </div>
+            <div class="office-details">
+              <address>Conc. KAGE n°4, Limete, Kinshasa</address>
+              <div class="office-contacts">
+                <a href="mailto:contact@pahidmonde.org">contact@pahidmonde.org</a>
+                <a href="tel:+243905423023">Fixe: +243 905 423 023</a>
+                <a href="tel:+243896033847">WA: +243 896 033 847</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 — Pahid Monde. Tous droits réservés.</p>
+      <button type="button" data-open-rgpd>Politique de confidentialité (RGPD)</button>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay">
+  <div class="modal">
+    <h3>Politique de confidentialité</h3>
+    <p>Nous nous engageons à respecter la vie privée des utilisateurs et à traiter leurs données personnelles conformément à la réglementation en vigueur, notamment le Règlement Général sur la Protection des Données (RGPD).</p>
+    <button type="button" class="btn btn--outline-dark" data-close-rgpd>Fermer</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
