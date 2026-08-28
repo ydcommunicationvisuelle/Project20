@@ -174,24 +174,60 @@ button{ font-family: inherit; cursor: pointer; }
   color: var(--text-soft); /* Subtítulo em tom escuro suave */
 }
 
-.nav__links{
+/* ---------------- Header / Nav (Ajustado) ---------------- */
+.nav__links {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 1.2rem; /* Separação suave entre os botões */
 }
-.nav__links > li{ position: relative; }
-.nav__links a{
+
+.nav__links > li { 
+  position: relative; 
+}
+
+.nav__links a {
   display: inline-block;
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-size: 0.86rem;
+  padding: 0.35rem 0.45rem;
+  font-size: 0.78rem; /* Taille plus petite pour éviter les engorgements */
   font-weight: 600;
-  color: var(--text); /* Cor do texto alterada para escuro */
-  transition: color .3s var(--ease), background .3s var(--ease);
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap; /* Empêche le texte de passer à la ligne */
+  border-radius: 6px;
+  position: relative;
+  transition: color 0.25s var(--ease), transform 0.25s var(--ease);
 }
-.nav__links a:hover, .nav__links li.active > a{ 
-  color: var(--ink); 
-  background: var(--gold); 
+/* Efeito Hover nos Links do Header */
+.nav__links a:hover {
+  color: var(--gold-deep);
+  background: transparent; /* Remove o fundo sólido pesado antigo */
+  transform: translateY(-2px); /* Leve elevação ao passar o mouse */
+}
+
+/* Linha decorativa animada no Hover e Item Ativo */
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: var(--gold-deep);
+  transition: width 0.25s var(--ease), transform 0.25s var(--ease);
+  transform: translateX(-50%);
+}
+
+.nav__links a:hover::after,
+.nav__links li.active > a::after,
+.nav__links a.active::after {
+  width: 75%;
+}
+
+.nav__links li.active > a,
+.nav__links a.active {
+  color: var(--gold-deep);
+  font-weight: 600;
+  background: transparent;
 }
 
 .nav__dropdown{
@@ -271,7 +307,8 @@ button{ font-family: inherit; cursor: pointer; }
 .hero__content{
   position: relative;
   z-index: 2;
-  max-width: 1000px;
+  min-height: 820px !important;
+  max-width: 920px;
   padding-bottom: 90px;
   display: flex;
   align-items: center;
@@ -845,83 +882,190 @@ button{ font-family: inherit; cursor: pointer; }
 }
 .form-success.is-visible{ display: flex; }
 
-/* ---------------- Footer ---------------- */
-.site-footer{ background: var(--ink); color: var(--on-ink); padding: 80px 0 0; }
-.footer-grid{
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
-  gap: 50px;
-  padding-bottom: 60px;
-  border-bottom: 1px solid var(--line-on-ink);
+/* ================= FOOTER GLOBAL COMPACTO (ATUALIZADO) ================= */
+.site-footer {
+  background: #0f172a;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 2.5rem 0 1.2rem 0;
 }
-.footer-brand img{ height: 102px; filter: brightness(0) invert(1); margin-bottom: 18px; }
-.footer-brand p{ color: var(--on-ink-soft); font-size: 0.92rem; max-width: 320px; margin-bottom: 22px; }
 
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 2fr; /* Ajuste das colunas para melhor encaixe */
+  gap: 1.8rem;
+  align-items: start;
+}
+
+/* Logo da marca 100% Branca */
+.footer-brand img {
+  max-width: 170px;
+  margin-bottom: 0.8rem;
+  filter: brightness(0) invert(1); /* Deixa a imagem totalmente branca */
+}
+
+.footer-brand p {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Redes Sociais Brancas e Levemente Maiores */
 .footer-social {
   display: flex;
-  align-items: left;
-  justify-content: left;
-  gap: 0.75rem;
-  width: 100%;
+  gap: 0.8rem;
 }
 
-.footer-social a {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+.footer-social img {
+  width: 24px; /* Tamanho levemente maior */
+  height: 24px;
+  filter: brightness(0) invert(1); /* Deixa os ícones sociais totalmente brancos */
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-social img:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.footer-col h5 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gold-deep, #c59d5f);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+/* Navegação ajustada sem quebra de linha no "Qui sommes-nous" */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(max-content, 1fr)); /* Garante espaço para o texto */
+  gap: 0.35rem 1rem;
+}
+
+.footer-col a {
+  font-size: 0.72rem; /* Fonte reduzida para caber perfeitamente */
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  white-space: nowrap; /* Impede a quebra de linha em menus longos como "Qui sommes-nous" */
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: var(--gold-deep, #c59d5f);
+}
+
+/* Blocos dos Sièges (Mantidos compactos no mesmo nível) */
+.footer-offices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+.office-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 0.7rem 0.85rem;
+}
+
+.office-header {
   display: flex;
-  align-items: left;
-  justify-content: left;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-social a img,
-.footer-social a svg {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  margin: auto;
-  display: block;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  filter: brightness(0) invert(0.85); 
+.office-flag {
+  width: 18px;
+  height: 12px;
+  object-fit: cover;
+  border-radius: 1px;
 }
 
-.footer-social a:hover {
-  transform: translateY(-4px) scale(1.05);
-  background: #E3A438;
-  border-color: #E3A438;
-  box-shadow: 0 8px 20px rgba(227, 164, 56, 0.35);
+.office-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold-deep, #c59d5f);
+  text-transform: uppercase;
 }
 
-.footer-social a:hover img,
-.footer-social a:hover svg {
-  transform: scale(1.1);
-  filter: brightness(0) invert(0.1);
+.office-details address {
+  font-style: normal;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.35rem;
 }
 
-.footer-social a:active {
-  transform: translateY(-1px) scale(0.98);
+.office-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
-.footer-col h5{ font-size: 0.78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); margin-bottom: 20px; }
-.footer-col ul{ display: grid; gap: 12px; }
-.footer-col a{ color: var(--on-ink-soft); font-size: 0.92rem; transition: color .3s var(--ease); }
-.footer-col a:hover{ color: var(--on-ink); }
-.footer-bottom{
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 26px 0; flex-wrap: wrap; gap: 12px;
+.office-contacts a {
+  font-size: 0.71rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  white-space: nowrap;
 }
-.footer-bottom p{ color: var(--on-ink-soft); font-size: 0.82rem; }
-.footer-bottom button{
-  background: none; border: none; color: var(--on-ink-soft);
-  font-size: 0.82rem; text-decoration: underline; text-underline-offset: 3px;
-}
-.footer-bottom button:hover{ color: var(--gold); }
 
+.office-contacts a:hover {
+  color: var(--gold-deep, #c59d5f);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 1.8rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-bottom button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.72rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.footer-bottom button:hover {
+  color: var(--gold-deep, #c59d5f);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-offices {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
 /* ---------------- RGPD modal ---------------- */
 .modal-overlay{
   position: fixed; inset: 0; background: rgba(16,27,51,.7);
