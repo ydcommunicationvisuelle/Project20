@@ -279,62 +279,69 @@ button{ font-family: inherit; cursor: pointer; }
 /* ---------------- Hero (Desktop) ---------------- */
 .hero {
   position: relative;
-  min-height: 820px;
-  max-height: 820px;
+  min-height: 700px;
+  max-height: 700px;
   display: flex;
   align-items: center;
   background: var(--ink);
   overflow: hidden;
-  padding-top: 120px;
+  padding-top: 100px; /* Reduzido para economizar espaço */
 }
 
 /* ---------------- Hero (Mobile Adjust) ---------------- */
 @media (max-width: 768px) {
   .hero {
-    min-height: 400px;      /* Garante que ocupe a tela inteira do celular */
-    max-height: 90%;       /* Remove a limitação para o conteúdo expandir livremente */
-    padding-top: 140px;     /* Espaço extra para o menu mobile/header */
-    padding-bottom: 0px;   /* Garante respiro na parte inferior */
+    min-height: 500px;      /* Leve ajuste para dar respiro ao conteúdo */
+    max-height: none;       /* Desativa limite rígido no mobile */
+    padding-top: 120px;
+    padding-bottom: 40px;
   }
 }
 
-.hero__bg{
+.hero__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
-.hero__bg img{
-  width: 100%; height: 100%;
+
+.hero__bg img,
+.hero__bg video {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   opacity: .34;
   transform: scale(1.08);
 }
-.hero__bg::after{
+
+.hero__bg::after {
   content: "";
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   background:
     radial-gradient(80% 60% at 12% 8%, rgba(16,27,51,.15), transparent 60%),
     linear-gradient(115deg, rgba(16,27,51,.98) 18%, rgba(16,27,51,.86) 42%, rgba(184,121,28,.55) 78%, rgba(227,164,56,.42) 100%);
 }
-.hero__content{
+
+.hero__content {
   position: relative;
   z-index: 2;
-  min-height: 820px !important;
-  max-width: 920px;
-  padding-bottom: 90px;
+  min-height: 700px !important;
+  max-width: 780px; /* Reduzido de 920px para ampliar as margens laterais */
+  padding-bottom: 70px; /* Ajustado para a barra do marquee */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 30px;
+  margin: 0 auto;
 }
 
 .hero__bridge {
-  width: 90px;
+  width: 75px; /* Levemente reduzido */
   height: auto;
   flex-shrink: 0;
 }
 
-.hero__bridge path{
+.hero__bridge path {
   fill: none;
   stroke: var(--gold);
   stroke-width: 1.6;
@@ -343,53 +350,74 @@ button{ font-family: inherit; cursor: pointer; }
   stroke-dashoffset: 400;
   animation: draw 1.8s var(--ease) .3s forwards;
 }
-.hero__bridge circle{ opacity: 0; animation: dot-in .6s var(--ease) forwards; }
-.hero__bridge .dot-a{ animation-delay: .3s; }
-.hero__bridge .dot-b{ animation-delay: 1.9s; }
-@keyframes draw{ to{ stroke-dashoffset: 0; } }
-@keyframes dot-in{ to{ opacity: 1; } }
 
-.hero__title{
+.hero__bridge circle { opacity: 0; animation: dot-in .6s var(--ease) forwards; }
+.hero__bridge .dot-a { animation-delay: .3s; }
+.hero__bridge .dot-b { animation-delay: 1.9s; }
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes dot-in { to { opacity: 1; } }
+
+.hero__title {
   color: var(--on-ink);
-  font-size: clamp(2.4rem, 5vw, 4.1rem);
-  line-height: 1.04;
+  font-size: clamp(2rem, 3.8vw, 3.2rem); /* Reduzido para caber nos 700px */
+  line-height: 1.08;
   font-weight: 600;
-  margin-bottom: 26px;
+  margin-bottom: 18px; /* Margem interna reduzida */
 }
-.hero__title em{
+
+.hero__title em {
   font-style: italic;
   font-weight: 500;
   color: var(--gold);
 }
-.hero__lead{
-  color: var(--on-ink-soft);
-  font-size: 1.08rem;
-  max-width: 560px;
-  margin-bottom: 40px;
-}
-.hero__actions{ display: flex; gap: 14px; flex-wrap: wrap; }
 
-.hero__marquee{
+.hero__lead {
+  color: var(--on-ink-soft);
+  font-size: 0.95rem; /* Fonte mais leve/compacta */
+  max-width: 480px; /* Margem mais larga */
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.hero__actions { 
+  display: flex; 
+  gap: 12px; 
+  flex-wrap: wrap; 
+}
+
+/* Ajuste nos botões para combinar com o Hero compacto */
+.hero__actions .btn {
+  padding: 0.65rem 1.3rem;
+  font-size: 0.88rem;
+}
+
+.hero__marquee {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0; 
+  left: 0; 
+  right: 0;
   z-index: 2;
   border-top: 1px solid var(--line-on-ink);
   background: rgba(16,27,51,0.55);
   backdrop-filter: blur(6px);
   overflow: hidden;
-  padding: 16px 0;
+  padding: 12px 0; /* Padding mais fino */
 }
-.hero__marquee-track{
+
+.hero__marquee-track {
   display: flex;
   gap: 48px;
   white-space: nowrap;
   animation: scroll-left 26s linear infinite;
   width: max-content;
 }
-@keyframes scroll-left{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
-.hero__marquee-track span{
+
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.hero__marquee-track span {
   color: var(--on-ink-soft);
-  font-size: 0.8rem;
+  font-size: 0.75rem; /* Letras do carrossel levemente menores */
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -397,14 +425,9 @@ button{ font-family: inherit; cursor: pointer; }
   align-items: center;
   gap: 10px;
 }
-.hero__marquee-track span::after{ content: "•"; color: var(--gold); }
-.hero__bg video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: .34;
-  transform: scale(1.08);
-}
+
+.hero__marquee-track span::after { content: "•"; color: var(--gold); }
+
 
 /* ---------------- Sections ---------------- */
 .section{ padding: 120px 0; position: relative; }
